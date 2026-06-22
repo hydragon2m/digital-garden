@@ -51,7 +51,9 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 transition-colors duration-300">
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       
-      <main className="flex-1 max-w-6xl mx-auto px-6 pt-28 pb-16 w-full flex flex-col gap-8">
+      <main className="flex-1 w-full pt-28 pb-16 flex flex-col">
+        {/* Dashboard Grid Container */}
+        <div className="max-w-6xl mx-auto px-6 w-full flex flex-col gap-8 mb-16">
         
         {/* Row 1: Greetings & Console */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -143,10 +145,10 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="flex flex-col gap-4 overflow-y-auto max-h-[320px] pr-1">
+            <div className="flex flex-col gap-3.5 pr-1">
               {skillCategories.map((cat, index) => (
-                <div key={index} className="flex flex-col gap-1.5 text-left border-l-2 border-cyan-500 pl-3">
-                  <h4 className="text-xs font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wide">
+                <div key={index} className="flex flex-col gap-1 text-left border-l-2 border-cyan-500 pl-3">
+                  <h4 className="text-[11px] font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wide">
                     {cat.title}
                   </h4>
                   <div className="flex flex-wrap gap-1.5 mt-1">
@@ -164,7 +166,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-
+        </div>
         </div>
 
         {/* Other Sections */}
