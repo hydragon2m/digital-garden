@@ -26,13 +26,16 @@ export default function Hero() {
             <h1 className="text-5xl font-black tracking-tight text-white mb-2 uppercase">
               {greetings.name}
             </h1>
-            <p className="text-xl font-bold text-blue-500 tracking-wide">
-              {greetings.subtitle}
+            <p className="text-lg font-bold text-cyan-400 tracking-wider mb-2">
+              Distributed Systems Architect
+            </p>
+            <p className="text-sm text-zinc-400 tracking-widest uppercase">
+              Backend Specialist • Microservices • SSO Identity
             </p>
           </div>
 
           <p className="text-base text-zinc-400 leading-relaxed max-w-md">
-            Building products from beautiful interfaces to scalable distributed systems.
+            Designing scalable distributed systems with gRPC, RabbitMQ, and CQRS patterns. Specialized in enterprise authentication (SSO/SAML 2.0/FIDO2) and microservices architecture. Builder of secure, performant systems handling 1M+ daily requests.
           </p>
 
           {/* Links Row */}
@@ -115,25 +118,25 @@ export default function Hero() {
           {/* Metric and Queue Dashboard (2 columns) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             
-            {/* Metric Panel */}
+            {/* Metric Panel - Systems Built */}
             <div className="p-5 rounded-xl bg-zinc-900/30 border border-zinc-800 shadow-lg flex flex-col justify-between font-mono text-xs">
-              <span className="text-zinc-500 font-bold uppercase tracking-wider mb-3">SYSTEM METRICS</span>
+              <span className="text-zinc-500 font-bold uppercase tracking-wider mb-3">CAREER STATS</span>
               <div className="flex flex-col gap-2.5">
                 <div className="flex justify-between border-b border-zinc-800/40 pb-1">
-                  <span className="text-zinc-400">services:</span>
-                  <span className="text-white font-bold">6</span>
+                  <span className="text-zinc-400">systems built:</span>
+                  <span className="text-cyan-400 font-bold">6+</span>
                 </div>
                 <div className="flex justify-between border-b border-zinc-800/40 pb-1">
-                  <span className="text-zinc-400">queues:</span>
-                  <span className="text-green-400 font-bold">healthy</span>
+                  <span className="text-zinc-400">services deployed:</span>
+                  <span className="text-blue-400 font-bold">20+</span>
                 </div>
                 <div className="flex justify-between border-b border-zinc-800/40 pb-1">
-                  <span className="text-zinc-400">deployment:</span>
-                  <span className="text-blue-500 font-bold">online</span>
+                  <span className="text-zinc-400">years experience:</span>
+                  <span className="text-green-400 font-bold">3+</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-zinc-400">redis hit rate:</span>
-                  <span className="text-green-400 font-bold">{redisHitRate}%</span>
+                  <span className="text-zinc-400">pattern expertise:</span>
+                  <span className="text-amber-400 font-bold">Advanced</span>
                 </div>
               </div>
             </div>
