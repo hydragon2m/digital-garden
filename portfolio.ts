@@ -55,6 +55,16 @@ export interface ProjectType {
   link?: string;
   tags: string[];
   stars?: number;
+  metrics?: {
+    users?: string;
+    qps?: string;
+    uptime?: string;
+    latency?: string;
+  };
+  highlights?: string[];
+  architecture?: {
+    description: string;
+  };
 }
 
 export interface EducationType {
@@ -141,7 +151,23 @@ export const projects: ProjectType[] = [
     desc: "Máy chủ quản lý người dùng tập trung hỗ trợ giao thức SAML 2.0, OAuth 2.0, OpenID Connect (OIDC). Tích hợp xác thực đa yếu tố MFA, Google Authenticator, Social Login, FIDO2/WebAuthn, Single Sign-On (SSO) và Single Logout (SLO). Kết quả định hướng tương tự Apache Knox và WSO2 IS.",
     github: "https://gitlab.com/DQH8391/sso-identity-server.git",
     tags: ["NestJS", "MySQL", "Redis", "SAML 2.0", "OAuth2", "OIDC"],
-    stars: 95
+    stars: 95,
+    metrics: {
+      users: "1000+",
+      qps: "10k/sec",
+      uptime: "99.95%",
+      latency: "< 100ms"
+    },
+    highlights: [
+      "Implemented SAML 2.0 protocol with XML encryption",
+      "Multi-factor authentication (MFA) with Google Authenticator",
+      "FIDO2/WebAuthn for passwordless authentication",
+      "Single Sign-On (SSO) and Single Logout (SLO)",
+      "Session management with Redis cache (TTL-based)"
+    ],
+    architecture: {
+      description: "Centralized identity server with load-balanced NestJS instances, MySQL primary-replica setup, Redis session cache, and event-driven SSO flows via RabbitMQ for audit logging and external integrations."
+    }
   }
 ];
 
@@ -381,7 +407,7 @@ export const aiQA = [
   },
   {
     keywords: ["kinh nghiệm", "làm việc", "công ty", "lịch sử"],
-    answer: "Anh Huy từng làm việc tại: 1. Beatcolor (08/2025 - Hiện tại): Backend Developer chuyên trách gRPC, RabbitMQ, Saga, Outbox, CQRS. 2. LifeteX (05/2024 - 06/2025): Backend Developer chuyên trách REST/GraphQL, MySQL/Postgre/MongoDB, Data Encryption. 3. GSS: Thực tập sinh."
+    answer: "Anh Huy từng làm việc tại: 1. Beatcolor (08/2025 - Hiện tại): Backend Developer chuyên trách gRPC, RabbitMQ, Saga, Outbox, CQRS. 2. LifeteX (05/2024 - 06/2025): Backend Developer chuyên trách REST/GraphQL, MySQL/Postgre/MongoDB, Data Encryption. 3. GSS: Th��c tập sinh."
   },
   {
     keywords: ["sso", "identity", "oauth2", "oidc", "saml", "dự án"],

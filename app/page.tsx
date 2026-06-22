@@ -14,6 +14,8 @@ import Footer from "../components/Footer";
 import GraphView from "../components/GraphView";
 import GardenExplorer from "../components/GardenExplorer";
 import NoteReader from "../components/NoteReader";
+import ThingsIBuilt from "../components/ThingsIBuilt";
+import ArchitecturePlayground from "../components/ArchitecturePlayground";
 import { greetings, socialLinks, skillCategories } from "../portfolio";
 
 export default function Home() {
@@ -171,6 +173,8 @@ export default function Home() {
 
         {/* Other Sections */}
         <Experience />
+        <ThingsIBuilt />
+        <ArchitecturePlayground />
         <Education />
         <Projects />
         <Feedbacks />
