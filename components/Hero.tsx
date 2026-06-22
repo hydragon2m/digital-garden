@@ -17,8 +17,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative pt-32 pb-20 border-b border-zinc-800 bg-[#09090b] text-left">
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section className="relative min-h-screen flex items-center justify-center pt-20 pb-20 border-b border-zinc-800 bg-[#09090b] text-left">
+      <div className="max-w-6xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         {/* Left Column: Bio and Links */}
         <div className="lg:col-span-5 flex flex-col gap-6">
