@@ -25,7 +25,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="min-h-[100svh] pt-16 pb-20 md:pt-20 md:pb-24 bg-zinc-50 dark:bg-zinc-900/20 border-t border-zinc-200/50 dark:border-zinc-800/50 snap-start scroll-mt-20 md:scroll-mt-24">
+    <section id="about" className="min-h-[100svh] pt-16 pb-20 md:pt-20 md:pb-24 bg-zinc-50 dark:bg-zinc-900/20 border-t border-zinc-200/50 dark:border-zinc-800/50 scroll-mt-20 md:scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading title={t("aboutTitle")} />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

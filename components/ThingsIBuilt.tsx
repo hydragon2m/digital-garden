@@ -8,7 +8,7 @@ export default function ThingsIBuilt() {
   const { content, t } = useLanguage();
 
   return (
-    <section id="things-built" className="min-h-[100svh] pt-16 pb-20 md:pt-20 md:pb-24 bg-zinc-50 dark:bg-zinc-900/20 border-t border-zinc-200 dark:border-zinc-800 snap-start scroll-mt-20 md:scroll-mt-24">
+    <section id="things-built" className="min-h-[100svh] pt-16 pb-20 md:pt-20 md:pb-24 bg-zinc-50 dark:bg-zinc-900/20 border-t border-zinc-200 dark:border-zinc-800 scroll-mt-20 md:scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading title={t("builtTitle")} />
 

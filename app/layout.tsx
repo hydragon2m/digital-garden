@@ -54,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth scroll-pt-24 md:scroll-pt-28`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col font-sans antialiased bg-white dark:bg-zinc-950">
         {children}

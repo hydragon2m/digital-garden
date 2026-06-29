@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="snap-end py-12 border-t border-zinc-200/50 dark:border-zinc-800/50 bg-white dark:bg-zinc-950"
+      className="py-12 border-t border-zinc-200/50 dark:border-zinc-800/50 bg-white dark:bg-zinc-950"
     >
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <p className="text-sm text-zinc-500 dark:text-zinc-400 text-center md:text-left">

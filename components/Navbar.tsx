@@ -17,6 +17,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
 
   useEffect(() => {
     const sectionIds = ["top", "about", "experience", "things-built", "projects", "education", "contact"];
+    let ticking = false;
 
     const updateActiveSection = () => {
       const sections = sectionIds
@@ -49,8 +50,14 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     };
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      updateActiveSection();
+      if (ticking) return;
+
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 20);
+        updateActiveSection();
+        ticking = false;
+      });
     };
 
     updateActiveSection();
@@ -64,6 +71,27 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       window.removeEventListener("hashchange", updateActiveSection);
     };
   }, []);
+
+  const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+
+    const id = href.replace("#", "");
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    const navOffset = 72;
+    const top = id === "top" ? 0 : target.getBoundingClientRect().top + window.scrollY - navOffset;
+    const nextHash = id === "top" ? "" : href;
+
+    setIsOpen(false);
+    setActiveSection(id);
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}${nextHash}`
+    );
+    window.scrollTo({ top, behavior: "smooth" });
+  };
 
   const navLinks = [
     { name: t("navAbout"), href: "#about" },
@@ -108,6 +136,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <a
           href="#top"
+          onClick={(event) => scrollToSection(event, "#top")}
           className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white hover:opacity-80 transition-opacity"
         >
           {content.greetings.name}
@@ -119,6 +148,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             <a
               key={link.href}
               href={link.href}
+              onClick={(event) => scrollToSection(event, link.href)}
               className={`group flex flex-col items-center gap-2 text-sm font-medium transition-colors ${
                 activeSection === link.href.replace("#", "")
                   ? "text-zinc-900 dark:text-white"
@@ -175,7 +205,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setIsOpen(false)}
+              onClick={(event) => scrollToSection(event, link.href)}
               className={`flex flex-col gap-1 text-base font-medium py-2 ${
                 activeSection === link.href.replace("#", "")
                   ? "text-zinc-950 dark:text-white"

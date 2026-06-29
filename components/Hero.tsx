@@ -10,7 +10,7 @@ export default function Hero() {
   const { greetings } = content;
 
   return (
-    <section id="top" className="relative min-h-[100svh] bg-white dark:bg-zinc-950 flex items-center justify-center py-20 snap-start scroll-mt-24 md:scroll-mt-28">
+    <section id="top" className="relative min-h-[100svh] bg-white dark:bg-zinc-950 flex items-center justify-center py-20 scroll-mt-20 md:scroll-mt-24">
       <div className="max-w-3xl mx-auto px-6 flex flex-col items-center text-center gap-8">
         
         {/* Avatar */}
