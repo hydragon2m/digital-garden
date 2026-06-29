@@ -7,7 +7,6 @@ import Hero from "../components/Hero";
 import Experience from "../components/Experience";
 import ThingsIBuilt from "../components/ThingsIBuilt";
 import Projects from "../components/Projects";
-import Feedbacks from "../components/Feedbacks";
 import Education from "../components/Education";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
@@ -52,7 +51,6 @@ export default function Home() {
         <Experience />
         <ThingsIBuilt />
         <Projects />
-        <Feedbacks />
         <Education />
         <Contact />
       </main>
