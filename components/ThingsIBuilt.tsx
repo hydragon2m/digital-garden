@@ -96,20 +96,13 @@ const deliverables: Deliverable[] = [
   },
 ];
 
-const categories = [
-  { name: "Auth & Security", icon: "🔐", color: "from-red-500 to-rose-500" },
-  { name: "Microservices", icon: "🔗", color: "from-blue-500 to-cyan-500" },
-  { name: "Database Systems", icon: "💾", color: "from-green-500 to-emerald-500" },
-  { name: "Infrastructure", icon: "🚀", color: "from-purple-500 to-pink-500" },
-];
-
 export default function ThingsIBuilt() {
   return (
     <section id="things-built" className="py-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-12">
-          Things I've Built
+          Things I&apos;ve Built
         </h2>
 
         {/* Deliverables Grid */}

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { notes, Note } from "../portfolio";
-import { Search, Filter, Calendar } from "lucide-react";
+import { notes } from "../portfolio";
+import { Search, Calendar } from "lucide-react";
 
 interface GardenExplorerProps {
   onSelectNote: (noteId: string) => void;

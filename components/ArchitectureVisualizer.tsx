@@ -9,8 +9,6 @@ import {
   MessageSquare, 
   Cpu, 
   Zap, 
-  CheckCircle2, 
-  XCircle, 
   ArrowRight,
   Info
 } from "lucide-react";
@@ -80,34 +78,6 @@ export default function ArchitectureVisualizer() {
   const [simType, setSimType] = useState<"success" | "failure">("success");
   const [simLogs, setSimLogs] = useState<string[]>([]);
 
-  // Simulation steps handler
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isSimulating) {
-      const stepsCount = simType === "success" ? 6 : 7;
-      
-      const runStep = () => {
-        setSimStep((prev) => {
-          const next = prev + 1;
-          if (next > stepsCount) {
-            setIsSimulating(false);
-            return 0;
-          }
-          
-          // Log current simulation details
-          updateLogs(next, simType);
-          return next;
-        });
-      };
-
-      timer = setInterval(runStep, 2500);
-    } else {
-      setSimStep(0);
-    }
-
-    return () => clearInterval(timer);
-  }, [isSimulating, simType]);
-
   const updateLogs = (step: number, type: "success" | "failure") => {
     const logsMap: Record<string, string[]> = {
       success: [
@@ -132,6 +102,32 @@ export default function ArchitectureVisualizer() {
     const currentLogs = logsMap[type] || [];
     setSimLogs(currentLogs.slice(0, step));
   };
+
+  // Simulation steps handler
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isSimulating) {
+      const stepsCount = simType === "success" ? 6 : 7;
+      
+      const runStep = () => {
+        setSimStep((prev) => {
+          const next = prev + 1;
+          if (next > stepsCount) {
+            setIsSimulating(false);
+            return 0;
+          }
+          
+          // Log current simulation details
+          updateLogs(next, simType);
+          return next;
+        });
+      };
+
+      timer = setInterval(runStep, 2500);
+    }
+
+    return () => clearInterval(timer);
+  }, [isSimulating, simType]);
 
   const startSimulation = (type: "success" | "failure") => {
     setSimType(type);

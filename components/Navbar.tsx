@@ -29,7 +29,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     { name: "Giới thiệu", href: "#about" },
     { name: "Kinh nghiệm", href: "#experience" },
     { name: "Dự án", href: "#projects" },
-    { name: "Đánh giá", href: "#feedbacks" },
+  //  { name: "Đánh giá", href: "#feedbacks" },
     { name: "Liên hệ", href: "#contact" },
   ];
 

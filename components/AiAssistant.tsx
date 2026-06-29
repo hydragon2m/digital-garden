@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { aiQA } from "../portfolio";
+import { aiQA, greetings } from "../portfolio";
 import { MessageSquare, X, Send, Bot } from "lucide-react";
 
 interface Message {
@@ -13,7 +13,7 @@ export default function AiAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([
-    { sender: "bot", text: "Xin chào! Tôi là Trợ lý Tuyển dụng ảo của anh Nguyễn Quốc Huy. Bạn cần tìm hiểu thông tin gì về anh Huy (kinh nghiệm, kỹ năng, dự án, thông tin liên hệ...)?" },
+    { sender: "bot", text: `Xin chào! Tôi là Trợ lý Tuyển dụng ảo của anh ${greetings.name}. Bạn cần tìm hiểu thông tin gì về anh ${greetings.name.split(" ").pop()} (kinh nghiệm, kỹ năng, dự án, thông tin liên hệ...)?` },
   ]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -63,7 +63,7 @@ export default function AiAssistant() {
           <div className="bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-3.5 flex items-center gap-3 text-white">
             <Bot size={22} className="text-white animate-bounce" />
             <div>
-              <h3 className="text-sm font-bold">Huy's AI Recruiter Bot</h3>
+              <h3 className="text-sm font-bold">{"Huy's AI Recruiter Bot"}</h3>
               <p className="text-[10px] text-white/80">Online & Ready to assist</p>
             </div>
           </div>

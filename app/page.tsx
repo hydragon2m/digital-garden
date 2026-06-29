@@ -17,13 +17,20 @@ export default function Home() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
+    let isDark = true;
     if (savedTheme) {
-      setDarkMode(savedTheme === "dark");
+      isDark = savedTheme === "dark";
     } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setDarkMode(prefersDark);
+      isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     }
-    setMounted(true);
+    
+    // Wrap state updates in a timeout to avoid synchronous setState inside useEffect warning
+    const timer = setTimeout(() => {
+      setDarkMode(isDark);
+      setMounted(true);
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {

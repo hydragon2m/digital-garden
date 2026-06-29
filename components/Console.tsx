@@ -108,7 +108,7 @@ export default function Console() {
         setInput("");
         return;
       default:
-        response = <p className="text-red-400">Lệnh không hợp lệ. Gõ "help" để xem danh sách lệnh.</p>;
+        response = <p className="text-red-400">Lệnh không hợp lệ. Gõ &quot;help&quot; để xem danh sách lệnh.</p>;
     }
 
     setHistory([...history, { command: input, output: response }]);

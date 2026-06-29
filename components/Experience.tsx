@@ -14,8 +14,6 @@ export default function Experience() {
 
         <div className="space-y-6">
           {experience.map((exp, index) => {
-            const placeholderLetter = exp.company ? exp.company.charAt(0) : "W";
-
             return (
               <div
                 key={index}

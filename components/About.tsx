@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { greetings } from "../portfolio";
 
 export default function About() {
   const philosophies = [
