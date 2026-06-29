@@ -4,14 +4,12 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import AiAssistant from "../components/AiAssistant";
 import Hero from "../components/Hero";
-import LandingIntro from "../components/LandingIntro";
 import Experience from "../components/Experience";
-import FeaturedProject from "../components/FeaturedProject";
 import ThingsIBuilt from "../components/ThingsIBuilt";
-import ArchitecturePlayground from "../components/ArchitecturePlayground";
-import Education from "../components/Education";
 import Projects from "../components/Projects";
 import Feedbacks from "../components/Feedbacks";
+import Education from "../components/Education";
+import ArchitecturePlayground from "../components/ArchitecturePlayground";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
@@ -50,16 +48,14 @@ export default function Home() {
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       
       <main className="flex-1 w-full">
-        {/* Clean Landing Page Flow */}
+        {/* Landing Page: Personal First, Skills Last */}
         <Hero />
-        <LandingIntro />
         <Experience />
-        <FeaturedProject />
         <ThingsIBuilt />
-        <ArchitecturePlayground />
-        <Education />
         <Projects />
         <Feedbacks />
+        <Education />
+        <ArchitecturePlayground />
         <Contact />
       </main>
 
