@@ -10,6 +10,7 @@ import Projects from "../components/Projects";
 import Education from "../components/Education";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import SmoothScroll from "../components/SmoothScroll";
 import { LanguageProvider } from "./LanguageContext";
 
 export default function Home() {
@@ -51,6 +52,7 @@ export default function Home() {
 
   return (
     <LanguageProvider>
+      <SmoothScroll />
       <div className="flex flex-col min-h-screen bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 transition-colors duration-300">
         <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
         
