@@ -90,11 +90,10 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
       "",
       `${window.location.pathname}${window.location.search}${nextHash}`
     );
-    window.dispatchEvent(
-      new CustomEvent("portfolio:smooth-scroll", {
-        detail: { top },
-      })
-    );
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
   };
 
   const navLinks = [
