@@ -9,7 +9,6 @@ import ThingsIBuilt from "../components/ThingsIBuilt";
 import Projects from "../components/Projects";
 import Feedbacks from "../components/Feedbacks";
 import Education from "../components/Education";
-import ArchitecturePlayground from "../components/ArchitecturePlayground";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
@@ -55,7 +54,6 @@ export default function Home() {
         <Projects />
         <Feedbacks />
         <Education />
-        <ArchitecturePlayground />
         <Contact />
       </main>
 
