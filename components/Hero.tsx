@@ -4,6 +4,7 @@ import React from "react";
 import { socialLinks } from "../portfolio";
 import Image from "next/image";
 import { useLanguage } from "../app/LanguageContext";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Hero() {
   const { content, t } = useLanguage();
@@ -11,7 +12,7 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative min-h-[100svh] bg-white dark:bg-zinc-950 flex items-center justify-center py-20 scroll-mt-20 md:scroll-mt-24">
-      <div className="max-w-3xl mx-auto px-6 flex flex-col items-center text-center gap-8">
+      <ScrollReveal className="max-w-3xl mx-auto px-6 flex flex-col items-center text-center gap-8">
         
         {/* Avatar */}
         <div className="w-48 h-48 rounded-full overflow-hidden border-2 border-zinc-200 dark:border-zinc-800 shadow-md">
@@ -67,7 +68,7 @@ export default function Hero() {
             </a>
           ) : null}
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

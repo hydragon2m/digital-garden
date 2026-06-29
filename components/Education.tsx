@@ -3,6 +3,7 @@
 import React from "react";
 import { useLanguage } from "../app/LanguageContext";
 import SectionHeading from "./SectionHeading";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Education() {
   const { content, t } = useLanguage();
@@ -15,8 +16,9 @@ export default function Education() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {educationInfo.map((edu, index) => (
-            <div
+            <ScrollReveal
               key={index}
+              delay={index * 100}
               className="p-6 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800"
             >
               <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-1">
@@ -45,7 +47,7 @@ export default function Education() {
                   ))}
                 </ul>
               )}
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

@@ -3,6 +3,7 @@
 import React from "react";
 import { useLanguage } from "../app/LanguageContext";
 import SectionHeading from "./SectionHeading";
+import ScrollReveal from "./ScrollReveal";
 
 export default function About() {
   const { t } = useLanguage();
@@ -31,20 +32,21 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left Column: Brief bio text */}
-          <div className="lg:col-span-5 text-left flex flex-col gap-6">
+          <ScrollReveal className="lg:col-span-5 text-left flex flex-col gap-6" delay={80}>
             <p className="text-sm sm:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
               {t("aboutIntro")}
             </p>
             <p className="text-sm sm:text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
               {t("aboutHistory")}
             </p>
-          </div>
+          </ScrollReveal>
 
           {/* Right Column: Philosophies cards */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             {philosophies.map((philo, index) => (
-              <div
+              <ScrollReveal
                 key={index}
+                delay={120 + index * 90}
                 className="flex items-start gap-4 p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/60 dark:border-zinc-800/60 hover:shadow-md transition-shadow text-left"
               >
                 <div className="text-sm font-bold tracking-[0.2em] text-zinc-500 dark:text-zinc-400 flex-shrink-0 p-3 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
@@ -58,7 +60,7 @@ export default function About() {
                     {philo.desc}
                   </p>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
 

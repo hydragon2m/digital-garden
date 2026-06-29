@@ -3,6 +3,7 @@
 import React from "react";
 import { useLanguage } from "../app/LanguageContext";
 import SectionHeading from "./SectionHeading";
+import ScrollReveal from "./ScrollReveal";
 
 export default function ThingsIBuilt() {
   const { content, t } = useLanguage();
@@ -15,8 +16,9 @@ export default function ThingsIBuilt() {
         {/* Deliverables Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {content.deliverables.map((item) => (
-            <div
+            <ScrollReveal
               key={item.id}
+              delay={(content.deliverables.indexOf(item) % 3) * 90}
               className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-6 flex flex-col h-full"
             >
               {/* Category Badge */}
@@ -50,7 +52,7 @@ export default function ThingsIBuilt() {
                   </span>
                 ))}
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

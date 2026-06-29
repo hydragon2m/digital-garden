@@ -3,6 +3,7 @@
 import React from "react";
 import { useLanguage } from "../app/LanguageContext";
 import SectionHeading from "./SectionHeading";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Experience() {
   const { content, t } = useLanguage();
@@ -16,8 +17,9 @@ export default function Experience() {
         <div className="space-y-6">
           {experience.map((exp, index) => {
             return (
-              <div
+              <ScrollReveal
                 key={index}
+                delay={index * 110}
                 className="bg-white dark:bg-zinc-900 rounded-lg p-8 border border-zinc-200 dark:border-zinc-800 transition-all duration-300"
               >
                 {/* Header Row: Company Info + Date */}
@@ -90,7 +92,7 @@ export default function Experience() {
                   </div>
 
                 </div>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>

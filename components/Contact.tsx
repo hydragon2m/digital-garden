@@ -4,6 +4,7 @@ import React from "react";
 import { socialLinks } from "../portfolio";
 import { useLanguage } from "../app/LanguageContext";
 import SectionHeading from "./SectionHeading";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Contact() {
   const { content, t } = useLanguage();
@@ -13,7 +14,7 @@ export default function Contact() {
     <section id="contact" className="min-h-[80svh] pt-16 pb-20 md:pt-20 md:pb-24 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 scroll-mt-20 md:scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading title={t("contactTitle")} />
-        <div className="flex flex-col items-center text-center gap-8">
+        <ScrollReveal className="flex flex-col items-center text-center gap-8" delay={90}>
           {/* Heading */}
           <div className="flex flex-col gap-2">
             <p className="text-zinc-600 dark:text-zinc-400 text-lg">
@@ -71,7 +72,7 @@ export default function Contact() {
               )}
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );

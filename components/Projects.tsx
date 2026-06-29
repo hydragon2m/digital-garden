@@ -3,6 +3,7 @@
 import React from "react";
 import { useLanguage } from "../app/LanguageContext";
 import SectionHeading from "./SectionHeading";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Projects() {
   const { content, t } = useLanguage();
@@ -16,8 +17,9 @@ export default function Projects() {
         {/* Projects */}
         <div className="space-y-12">
           {projects.map((project, index) => (
-            <div
+            <ScrollReveal
               key={index}
+              delay={index * 100}
               className="bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 shadow-md hover:shadow-lg rounded-xl p-8 transition-all duration-300"
             >
               {/* Title & Stars */}
@@ -136,7 +138,7 @@ export default function Projects() {
                   </a>
                 )}
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
