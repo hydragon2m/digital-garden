@@ -2,17 +2,16 @@
 
 import React from "react";
 import { useLanguage } from "../app/LanguageContext";
+import SectionHeading from "./SectionHeading";
 
 export default function Education() {
   const { content, t } = useLanguage();
   const { educationInfo } = content;
 
   return (
-    <section id="education" className="py-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 snap-start scroll-mt-24 md:scroll-mt-28">
+    <section id="education" className="min-h-[100svh] pt-16 pb-20 md:pt-20 md:pb-24 bg-zinc-50 dark:bg-zinc-900/20 border-t border-zinc-200 dark:border-zinc-800 snap-start scroll-mt-20 md:scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-12">
-          {t("educationTitle")}
-        </h2>
+        <SectionHeading title={t("educationTitle")} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {educationInfo.map((edu, index) => (

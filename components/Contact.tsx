@@ -1,51 +1,21 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { socialLinks } from "../portfolio";
 import { useLanguage } from "../app/LanguageContext";
-
-interface GithubData {
-  bio: string;
-  location: string;
-}
+import SectionHeading from "./SectionHeading";
 
 export default function Contact() {
-  const [profile, setProfile] = useState<GithubData | null>(null);
   const { content, t } = useLanguage();
-
-  useEffect(() => {
-    const githubUrl = socialLinks.github || "https://gitlab.com/DQH8391";
-    const username = githubUrl.split("/").pop() || "DQH8391";
-
-    fetch(`https://api.github.com/users/${username}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProfile({
-          bio: data.bio || content.contactFallback.bio,
-          location: data.location || content.contactFallback.location,
-        });
-      })
-      .catch(() => {
-        setProfile({
-          bio: content.contactFallback.bio,
-          location: content.contactFallback.location,
-        });
-      });
-  }, [content.contactFallback.bio, content.contactFallback.location]);
-
-  if (!profile) {
-    return null;
-  }
+  const profile = content.contactFallback;
 
   return (
-    <section id="contact" className="py-16 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 snap-start scroll-mt-24 md:scroll-mt-28">
+    <section id="contact" className="min-h-[80svh] pt-16 pb-20 md:pt-20 md:pb-24 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 snap-start scroll-mt-20 md:scroll-mt-24">
       <div className="max-w-6xl mx-auto px-6">
+        <SectionHeading title={t("contactTitle")} />
         <div className="flex flex-col items-center text-center gap-8">
           {/* Heading */}
           <div className="flex flex-col gap-2">
-            <h2 className="text-4xl font-bold text-zinc-900 dark:text-white">
-              {t("contactTitle")}
-            </h2>
             <p className="text-zinc-600 dark:text-zinc-400 text-lg">
               {profile.bio}
             </p>
@@ -79,9 +49,9 @@ export default function Contact() {
                   LinkedIn
                 </a>
               )}
-              {socialLinks.github && (
+              {socialLinks.gitlab && (
                 <a
-                  href={socialLinks.github}
+                  href={socialLinks.gitlab}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-lg transition-colors font-medium text-sm"

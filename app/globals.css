@@ -28,7 +28,8 @@ body {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
+  scroll-padding-top: 4.5rem;
+  scroll-snap-type: y proximity;
 }
 
 /* Custom animations for the engineer dashboard */

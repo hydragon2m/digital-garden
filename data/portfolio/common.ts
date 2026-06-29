@@ -4,7 +4,7 @@ export const socialLinks: SocialLinks = {
   email: "mailto:dohuy8391@gmail.com",
   phone: "0337 998 303",
   linkedin: "https://linkedin.com/in/quochuy",
-  github: "https://gitlab.com/DQH8391",
+  github: "",
   gitlab: "https://gitlab.com/DQH8391",
   twitter: "",
 };
@@ -29,20 +29,7 @@ export const systemArchitecture: SystemArchitecture = {
   ]
 };
 
-export const feedbacks = [
-  {
-    name: "Lãnh đạo Tech tại LifeteX",
-    role: "Solution Architect",
-    feedback:
-      "Huy là một lập trình viên Backend có khả năng nghiên cứu công nghệ sâu rộng. Cậu ấy tự tay triển khai các chuẩn bảo mật phức tạp, cấu trúc API sạch sẽ và tối ưu hóa hệ cơ sở dữ liệu quan hệ vô cùng hiệu quả."
-  },
-  {
-    name: "Quản lý Dự án tại Beatcolor",
-    role: "Project Manager",
-    feedback:
-      "Huy hòa nhập rất nhanh vào các dự án lớn, xử lý tốt các bài toán kiến trúc phân tán (gRPC, RabbitMQ). Cậu ấy viết tài liệu hướng dẫn kỹ thuật cực kỳ chi tiết và dễ đọc."
-  }
-];
+export const feedbacks = [];
 
 export const graphData: GraphData = {
   nodes: [
@@ -149,7 +136,7 @@ Khi tách rời cơ sở dữ liệu cho từng dịch vụ riêng biệt tại 
     content: `
 ### Tối ưu hóa Database cho Hệ thống Doanh nghiệp lớn
 
-Tại LifeteX, cơ sở dữ liệu PostgreSQL chịu tải rất lớn với hàng triệu bản ghi ghi nhận mỗi ngày.
+Tại LifeteX, cơ sở dữ liệu PostgreSQL phải xử lý khối lượng dữ liệu lớn và nhiều truy vấn nghiệp vụ cùng lúc.
 
 #### 1. Phân tách Đọc/Ghi (Master-Replica Replication)
 - Thiết lập **PostgreSQL Streaming Replication**:
@@ -181,17 +168,16 @@ Ghi chú này ghi lại quá trình tôi nghiên cứu giao diện và cơ chế
 ];
 
 export const seoData: SeoData = {
-  title: "Đỗ Quốc Huy | Software Engineer & Digital Garden Owner",
-  description: "Chào mừng bạn đến với Khu vườn Tri thức Số (Digital Garden) của tôi. Đây là nơi tôi ghi lại hành trình nghiên cứu công nghệ, ghi chú hệ thống phân tán, bảo mật SSO và các trải nghiệm lập trình Back-end hàng ngày.",
+  title: "Đỗ Quốc Huy | Back-end Engineer",
+  description: "Back-end engineer tập trung vào microservices, identity server, SSO/OIDC/SAML và tối ưu database.",
   author: "Đỗ Quốc Huy",
   image: "/avatar.png",
   url: "https://portfolio.quochuy.dev",
   keywords: [
     "Đỗ Quốc Huy",
-    "Software Engineer",
-    "Digital Garden",
+    "Back-end Engineer",
     "NestJS Developer",
     "Single Sign-On SSO",
-    "Đỗ Quốc Huy Backend",
+    "Microservices",
   ],
 };

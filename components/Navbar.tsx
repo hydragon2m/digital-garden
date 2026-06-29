@@ -16,48 +16,57 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const { language, setLanguage, t, content } = useLanguage();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
+    const sectionIds = ["top", "about", "experience", "things-built", "projects", "education", "contact"];
+
+    const updateActiveSection = () => {
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter((el): el is HTMLElement => Boolean(el));
+
+      if (sections.length === 0) return;
+
+      const readingLine = window.scrollY + window.innerHeight * 0.38;
+      const current = sections.find((section, index) => {
+        const next = sections[index + 1];
+        const start = section.offsetTop;
+        const end = next ? next.offsetTop : document.documentElement.scrollHeight;
+
+        return readingLine >= start && readingLine < end;
+      });
+
+      if (current) {
+        setActiveSection(current.id);
+
+        const nextHash = current.id === "top" ? "" : `#${current.id}`;
+        if (window.location.hash !== nextHash) {
+          window.history.replaceState(
+            null,
+            "",
+            `${window.location.pathname}${window.location.search}${nextHash}`
+          );
+        }
       }
     };
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      updateActiveSection();
+    };
+
+    updateActiveSection();
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("resize", updateActiveSection);
+    window.addEventListener("hashchange", updateActiveSection);
 
-  useEffect(() => {
-    const sectionIds = ["top", "experience", "things-built", "projects", "education", "contact"];
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
-
-    if (sections.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible?.target.id) {
-          setActiveSection(visible.target.id);
-        }
-      },
-      {
-        root: null,
-        threshold: [0.2, 0.35, 0.5, 0.65],
-        rootMargin: "-20% 0px -55% 0px",
-      }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", updateActiveSection);
+      window.removeEventListener("hashchange", updateActiveSection);
+    };
   }, []);
 
   const navLinks = [
-    { name: t("navAbout"), href: "#top" },
+    { name: t("navAbout"), href: "#about" },
     { name: t("navExperience"), href: "#experience" },
     { name: t("navBuilt"), href: "#things-built" },
     { name: t("navProjects"), href: "#projects" },
@@ -98,7 +107,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
         <a
-          href="#"
+          href="#top"
           className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white hover:opacity-80 transition-opacity"
         >
           {content.greetings.name}
@@ -110,13 +119,20 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors ${
+              className={`group flex flex-col items-center gap-2 text-sm font-medium transition-colors ${
                 activeSection === link.href.replace("#", "")
                   ? "text-zinc-900 dark:text-white"
                   : "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
               }`}
             >
-              {link.name}
+              <span>{link.name}</span>
+              <span
+                className={`h-0.5 w-full origin-left rounded-full transition-all duration-300 ${
+                  activeSection === link.href.replace("#", "")
+                    ? "scale-x-100 bg-zinc-900 dark:bg-white"
+                    : "scale-x-0 bg-zinc-400/40 group-hover:scale-x-100"
+                }`}
+              />
             </a>
           ))}
 
@@ -160,13 +176,20 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
               key={link.href}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className={`text-base font-medium py-2 ${
+              className={`flex flex-col gap-1 text-base font-medium py-2 ${
                 activeSection === link.href.replace("#", "")
                   ? "text-zinc-950 dark:text-white"
                   : "text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white"
               }`}
             >
-              {link.name}
+              <span>{link.name}</span>
+              <span
+                className={`h-0.5 w-16 origin-left rounded-full transition-all duration-300 ${
+                  activeSection === link.href.replace("#", "")
+                    ? "scale-x-100 bg-zinc-900 dark:bg-white"
+                    : "scale-x-0 bg-zinc-400/40"
+                }`}
+              />
             </a>
           ))}
         </div>

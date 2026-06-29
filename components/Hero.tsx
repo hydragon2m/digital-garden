@@ -43,12 +43,12 @@ export default function Hero() {
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-4 justify-center mt-4">
           <a
-            href={socialLinks.github}
+            href={socialLinks.gitlab || socialLinks.github}
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 bg-zinc-900 dark:bg-zinc-800 text-white hover:bg-zinc-800 dark:hover:bg-zinc-700 rounded-lg transition-colors font-medium text-sm"
           >
-            Github
+            GitLab
           </a>
           <a
             href="#experience"
@@ -56,14 +56,16 @@ export default function Hero() {
           >
             {t("heroExperience")}
           </a>
-          <a
-            href={greetings.resumeLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-3 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-lg transition-colors font-medium text-sm"
-          >
-            {t("heroResume")}
-          </a>
+          {greetings.resumeLink ? (
+            <a
+              href={greetings.resumeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-lg transition-colors font-medium text-sm"
+            >
+              {t("heroResume")}
+            </a>
+          ) : null}
         </div>
       </div>
     </section>
