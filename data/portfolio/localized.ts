@@ -9,9 +9,9 @@ export const uiTranslations = {
     navContact: "Liên hệ",
     themeToggle: "Đổi giao diện",
     languageToggle: "Đổi ngôn ngữ",
-    heroTitle: "Back-end Engineer · Microservices · SSO & Security",
+    heroTitle: "Software Engineer · Backend Systems · SSO & Security",
     heroDescription:
-      "Tôi xây dựng backend, API và hệ thống microservices với Node.js, gRPC, RabbitMQ và database. Tập trung vào tính ổn định, khả năng mở rộng và giải quyết bài toán thực tế.",
+      "Tôi phát triển phần mềm với trọng tâm ở backend systems, API, microservices và database. Tập trung vào tính ổn định, khả năng mở rộng và giải quyết bài toán thực tế.",
     heroExperience: "Kinh nghiệm",
     heroResume: "CV",
     experienceTitle: "Kinh nghiệm",
@@ -32,8 +32,8 @@ export const uiTranslations = {
     aboutCard3Desc: "EXPLAIN ANALYZE, benchmark và log đúng chỗ trước khi thêm cache hay index mới.",
     landingIntroTitle: "Systems that stay usable when they grow",
     landingIntroDescription:
-      "I build backend systems with clear contracts, reliable messaging, and practical performance work. The goal is not just to ship features, but to keep the system understandable and maintainable as it scales.",
-    landingIntroFocus1Title: "Backend contracts",
+      "I build software systems with clear contracts, reliable messaging, and practical performance work. The goal is not just to ship features, but to keep the system understandable and maintainable as it scales.",
+    landingIntroFocus1Title: "API contracts",
     landingIntroFocus1Desc: "OpenAPI, gRPC, and API design that let teams move in parallel with less friction.",
     landingIntroFocus2Title: "Identity & security",
     landingIntroFocus2Desc: "SSO, OAuth2, OIDC, SAML, and auth flows built with a security-first mindset.",
@@ -65,9 +65,9 @@ export const uiTranslations = {
     navContact: "Contact",
     themeToggle: "Toggle theme",
     languageToggle: "Change language",
-    heroTitle: "Back-end Engineer · Microservices · SSO & Security",
+    heroTitle: "Software Engineer · Backend Systems · SSO & Security",
     heroDescription:
-      "I build backend services, APIs, and microservice systems with Node.js, gRPC, RabbitMQ, and databases. I focus on reliability, scalability, and practical problem solving.",
+      "I build software with a focus on backend systems, APIs, microservices, and databases. I focus on reliability, scalability, and practical problem solving.",
     heroExperience: "Experience",
     heroResume: "Resume",
     experienceTitle: "Experience",
@@ -88,8 +88,8 @@ export const uiTranslations = {
     aboutCard3Desc: "Use EXPLAIN ANALYZE, benchmarks, and the right logs before adding a cache or a new index.",
     landingIntroTitle: "Systems that stay usable when they grow",
     landingIntroDescription:
-      "I build backend systems with clear contracts, reliable messaging, and practical performance work. The goal is not just to ship features, but to keep the system understandable and maintainable as it scales.",
-    landingIntroFocus1Title: "Backend contracts",
+      "I build software systems with clear contracts, reliable messaging, and practical performance work. The goal is not just to ship features, but to keep the system understandable and maintainable as it scales.",
+    landingIntroFocus1Title: "API contracts",
     landingIntroFocus1Desc: "OpenAPI, gRPC, and API design that let teams move in parallel with less friction.",
     landingIntroFocus2Title: "Identity & security",
     landingIntroFocus2Desc: "SSO, OAuth2, OIDC, SAML, and auth flows built with a security-first mindset.",
@@ -126,7 +126,7 @@ const educationVi: EducationType[] = [
 
 const experienceVi: ExperienceType[] = [
   {
-    role: "Back-end Developer",
+    role: "Software Engineer",
     company: "Beatcolor",
     date: "08/2025 - Hiện tại",
     desc: "Beatcolor là công ty xử lý ảnh, video, 3D phục vụ khách hàng quốc tế và cung cấp giải pháp B2B.",
@@ -138,7 +138,7 @@ const experienceVi: ExperienceType[] = [
     ],
   },
   {
-    role: "Back-end Developer",
+    role: "Software Engineer",
     company: "LifeteX",
     date: "05/2024 - 06/2025",
     desc: "LifeteX là công ty cung cấp phần mềm quản trị toàn diện cho doanh nghiệp và Chính phủ.",
@@ -254,7 +254,7 @@ const aiQAVi: QAItem[] = [
 ];
 
 const contactFallbackVi = {
-  bio: "Back-end Engineer · Microservices · SSO & Security",
+  bio: "Software Engineer · Backend Systems · SSO & Security",
   location: "Hà Nội, Việt Nam",
 };
 
@@ -283,7 +283,7 @@ const educationEn: EducationType[] = [
 
 const experienceEn: ExperienceType[] = [
   {
-    role: "Back-end Developer",
+    role: "Software Engineer",
     company: "Beatcolor",
     date: "08/2025 - Present",
     desc: "Beatcolor processes images, videos, and 3D assets for international customers and B2B solutions.",
@@ -295,7 +295,7 @@ const experienceEn: ExperienceType[] = [
     ],
   },
   {
-    role: "Back-end Developer",
+    role: "Software Engineer",
     company: "LifeteX",
     date: "05/2024 - 06/2025",
     desc: "LifeteX provides comprehensive management software for enterprises and government organizations.",
@@ -358,7 +358,7 @@ const aiQAEn: QAItem[] = [
 ];
 
 const contactFallbackEn = {
-  bio: "Back-end Engineer · Microservices · SSO & Security",
+  bio: "Software Engineer · Backend Systems · SSO & Security",
   location: "Hanoi, Vietnam",
 };
 
@@ -518,9 +518,9 @@ export const localizedPortfolio: Record<Language, LocalizedPortfolioContent> = {
     greetings: {
       name: "Đỗ Quốc Huy",
       title: "Đỗ Quốc Huy",
-      subtitle: "Back-end Engineer · Microservices · SSO & Security",
+      subtitle: "Software Engineer · Backend Systems · SSO & Security",
       description:
-        "Back-end engineer với kinh nghiệm làm việc trên microservices, identity server (SSO/OIDC/SAML) và tối ưu database. Hiện tôi đang phát triển hạ tầng xử lý ảnh/video quy mô lớn tại Beatcolor.",
+        "Software engineer với kinh nghiệm làm việc trên backend systems, microservices, identity server (SSO/OIDC/SAML) và tối ưu database. Hiện tôi đang phát triển hạ tầng xử lý ảnh/video quy mô lớn tại Beatcolor.",
       resumeLink: "",
     },
     educationInfo: educationVi,
@@ -536,9 +536,9 @@ export const localizedPortfolio: Record<Language, LocalizedPortfolioContent> = {
     greetings: {
       name: "Do Quoc Huy",
       title: "Do Quoc Huy",
-      subtitle: "Back-end Engineer · Microservices · SSO & Security",
+      subtitle: "Software Engineer · Backend Systems · SSO & Security",
       description:
-        "Back-end engineer with experience in microservices, identity servers (SSO/OIDC/SAML), and database optimization. I am currently building large-scale image/video processing infrastructure at Beatcolor.",
+        "Software engineer with experience in backend systems, microservices, identity servers (SSO/OIDC/SAML), and database optimization. I am currently building large-scale image/video processing infrastructure at Beatcolor.",
       resumeLink: "",
     },
     educationInfo: educationEn,

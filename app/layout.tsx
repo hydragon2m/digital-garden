@@ -19,17 +19,30 @@ export const metadata: Metadata = {
   description: seoData.description,
   authors: [{ name: seoData.author }],
   keywords: seoData.keywords,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: seoData.title,
     description: seoData.description,
+    url: "/",
+    siteName: seoData.author,
+    locale: "vi_VN",
+    type: "website",
     images: [
       {
         url: seoData.image,
-        width: 800,
-        height: 600,
-        alt: seoData.title,
+        width: 1200,
+        height: 630,
+        alt: "Do Quoc Huy - Software Engineer portfolio",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: seoData.title,
+    description: seoData.description,
+    images: [seoData.image],
   },
 };
 

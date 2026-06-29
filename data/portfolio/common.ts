@@ -168,14 +168,15 @@ Ghi chú này ghi lại quá trình tôi nghiên cứu giao diện và cơ chế
 ];
 
 export const seoData: SeoData = {
-  title: "Đỗ Quốc Huy | Back-end Engineer",
-  description: "Back-end engineer tập trung vào microservices, identity server, SSO/OIDC/SAML và tối ưu database.",
+  title: "Đỗ Quốc Huy | Software Engineer",
+  description: "Software engineer tập trung vào backend systems, microservices, identity server, SSO/OIDC/SAML và tối ưu database.",
   author: "Đỗ Quốc Huy",
-  image: "/avatar.png",
+  image: "/opengraph-image",
   url: (process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "https://info.quochuy.xyz").replace(/\/$/, ""),
   keywords: [
     "Đỗ Quốc Huy",
-    "Back-end Engineer",
+    "Software Engineer",
+    "Backend Systems",
     "NestJS Developer",
     "Single Sign-On SSO",
     "Microservices",
