@@ -97,7 +97,7 @@ export interface ExperienceType {
 export const greetings = {
   name: "Đỗ Quốc Huy",
   title: "Đỗ Quốc Huy",
-  subtitle: "Back-end Developer & Digital Garden Owner",
+  subtitle: "Software Engineer & Digital Garden Owner",
   description:
     "Chào mừng bạn đến với Khu vườn Tri thức Số (Digital Garden) của tôi. Đây là nơi tôi ghi lại hành trình nghiên cứu công nghệ, ghi chú hệ thống phân tán, bảo mật SSO và các trải nghiệm lập trình Back-end hàng ngày.",
   resumeLink: "#",
@@ -451,9 +451,9 @@ export const uiTranslations = {
     navContact: "Liên hệ",
     themeToggle: "Đổi giao diện",
     languageToggle: "Đổi ngôn ngữ",
-    heroTitle: "Kiến trúc sư Hệ thống Phân tán",
+    heroTitle: "Software Engineer",
     heroDescription:
-      "Xây dựng hệ thống phân tán có khả năng mở rộng với gRPC, RabbitMQ và CQRS. Tập trung vào xác thực doanh nghiệp và kiến trúc microservices.",
+      "Tôi xây dựng backend, API và hệ thống microservices với Node.js, gRPC, RabbitMQ và database. Tập trung vào code rõ ràng, hệ thống ổn định và giải quyết vấn đề thực tế.",
     heroExperience: "Kinh nghiệm",
     heroResume: "CV",
     experienceTitle: "Kinh nghiệm",
@@ -487,9 +487,9 @@ export const uiTranslations = {
     navContact: "Contact",
     themeToggle: "Toggle theme",
     languageToggle: "Change language",
-    heroTitle: "Distributed Systems Architect",
+    heroTitle: "Software Engineer",
     heroDescription:
-      "Building scalable distributed systems with gRPC, RabbitMQ, and CQRS patterns. Specialized in enterprise authentication and microservices architecture.",
+      "I build backend services, APIs, and microservice systems with Node.js, gRPC, RabbitMQ, and databases. I focus on clear code, reliable systems, and practical problem solving.",
     heroExperience: "Experience",
     heroResume: "Resume",
     experienceTitle: "Experience",
@@ -611,7 +611,7 @@ export const localizedPortfolio: Record<Language, LocalizedPortfolioContent> = {
     deliverables: deliverablesVi,
     aiQA,
     contactFallback: {
-      bio: "Back-end Developer & Digital Garden Owner",
+      bio: "Software Engineer & Digital Garden Owner",
       location: "Thanh Xuân - Hà Nội",
     },
     scale: {
@@ -631,7 +631,7 @@ export const localizedPortfolio: Record<Language, LocalizedPortfolioContent> = {
   en: {
     greetings: {
       ...greetings,
-      subtitle: "Back-end Developer & Digital Garden Owner",
+      subtitle: "Software Engineer & Digital Garden Owner",
       description:
         "Welcome to my Digital Garden. This is where I document my research journey across backend engineering, distributed systems, SSO security, and day-to-day software development.",
     },
@@ -768,7 +768,7 @@ export const localizedPortfolio: Record<Language, LocalizedPortfolioContent> = {
       },
     ],
     contactFallback: {
-      bio: "Back-end Developer & Digital Garden Owner",
+      bio: "Software Engineer & Digital Garden Owner",
       location: "Thanh Xuan - Hanoi",
     },
     scale: {
@@ -795,7 +795,7 @@ export const seoData = {
   url: "https://portfolio.quochuy.dev",
   keywords: [
     greetings.name,
-    "Back-end Developer",
+    "Software Engineer",
     "Digital Garden",
     "NestJS Developer",
     "Single Sign-On SSO",
