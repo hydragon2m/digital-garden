@@ -631,6 +631,8 @@ export const localizedPortfolio: Record<Language, LocalizedPortfolioContent> = {
   en: {
     greetings: {
       ...greetings,
+      name: "Do Quoc Huy",
+      title: "Do Quoc Huy",
       subtitle: "Software Engineer & Digital Garden Owner",
       description:
         "Welcome to my Digital Garden. This is where I document my research journey across backend engineering, distributed systems, SSO security, and day-to-day software development.",
