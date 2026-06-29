@@ -105,52 +105,24 @@ const categories = [
 
 export default function ThingsIBuilt() {
   return (
-    <section id="things-built" className="py-20 bg-zinc-50 dark:bg-zinc-900/10 border-t border-zinc-200/50 dark:border-zinc-800/50">
+    <section id="things-built" className="py-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-16">
-          <div className="w-14 h-14 rounded-full bg-white dark:bg-zinc-800 text-amber-500 shadow-md flex items-center justify-center flex-shrink-0">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-          </div>
-          <div>
-            <h2 className="text-3xl font-extrabold text-amber-600 dark:text-amber-400">
-              Things I've Built
-            </h2>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-              Concrete deliverables across architecture layers and domains
-            </p>
-          </div>
-        </div>
-
-        {/* Category Tabs */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
-          {categories.map((cat) => (
-            <div
-              key={cat.name}
-              className={`p-4 rounded-lg bg-gradient-to-br ${cat.color} text-white text-center shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border border-white/20 backdrop-blur-sm`}
-            >
-              <div className="text-2xl mb-2">{cat.icon}</div>
-              <div className="text-xs font-bold uppercase tracking-wide">{cat.name}</div>
-            </div>
-          ))}
-        </div>
+        <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-12">
+          Things I've Built
+        </h2>
 
         {/* Deliverables Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {deliverables.map((item) => (
             <div
               key={item.id}
-              className="bg-white dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col h-full"
+              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-6 flex flex-col h-full"
             >
               {/* Category Badge */}
-              <div className="inline-flex items-center gap-2 mb-4 w-fit">
-                <span className="text-lg">{item.categoryIcon}</span>
-                <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-widest">
-                  {item.category}
-                </span>
-              </div>
+              <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wide mb-2">
+                {item.category}
+              </p>
 
               {/* Title */}
               <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-3 leading-tight">
@@ -163,18 +135,16 @@ export default function ThingsIBuilt() {
               </p>
 
               {/* Achievement Highlight */}
-              <div className="mb-4 p-3 rounded-lg bg-zinc-100/50 dark:bg-zinc-800/50 border border-zinc-200/50 dark:border-zinc-700/50">
-                <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
-                  ✓ {item.achievement}
-                </p>
-              </div>
+              <p className="text-xs text-zinc-600 dark:text-zinc-400 mb-4">
+                {item.achievement}
+              </p>
 
               {/* Tags */}
               <div className="flex flex-wrap gap-2">
                 {item.tags.map((tag, idx) => (
                   <span
                     key={idx}
-                    className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-200/50 dark:border-zinc-700/50"
+                    className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700"
                   >
                     {tag}
                   </span>
@@ -182,28 +152,6 @@ export default function ThingsIBuilt() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Summary Stats */}
-        <div className="mt-16 grid grid-cols-3 md:grid-cols-3 gap-4">
-          <div className="bg-white dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 rounded-lg p-6 text-center">
-            <div className="text-3xl font-black text-cyan-500 mb-2">9+</div>
-            <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-widest">
-              Core Systems
-            </p>
-          </div>
-          <div className="bg-white dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 rounded-lg p-6 text-center">
-            <div className="text-3xl font-black text-blue-500 mb-2">4</div>
-            <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-widest">
-              Architecture Domains
-            </p>
-          </div>
-          <div className="bg-white dark:bg-zinc-900/60 border border-zinc-200/50 dark:border-zinc-800/50 rounded-lg p-6 text-center">
-            <div className="text-3xl font-black text-amber-500 mb-2">20+</div>
-            <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-widest">
-              Technologies
-            </p>
-          </div>
         </div>
       </div>
     </section>
