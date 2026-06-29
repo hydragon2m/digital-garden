@@ -106,26 +106,13 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   ];
 
   const languageToggle = (
-    <div
-      className="flex items-center gap-1 rounded-full bg-zinc-100 dark:bg-zinc-800 p-1 text-xs font-bold text-zinc-700 dark:text-zinc-300"
+    <button
+      onClick={() => setLanguage(language === "vi" ? "en" : "vi")}
+      className="group flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 px-3 py-1.5 text-xs font-bold text-zinc-700 dark:text-zinc-300 transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm min-w-[42px]"
       aria-label={t("languageToggle")}
     >
-      <Languages size={16} className="ml-1" />
-      {(["vi", "en"] as const).map((lang) => (
-        <button
-          key={lang}
-          onClick={() => setLanguage(lang)}
-          className={`min-w-8 rounded-full px-2 py-1 transition-colors ${
-            language === lang
-              ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-950"
-              : "hover:bg-zinc-200 dark:hover:bg-zinc-700"
-          }`}
-          aria-pressed={language === lang}
-        >
-          {lang.toUpperCase()}
-        </button>
-      ))}
-    </div>
+      <span className="tracking-wider">{language.toUpperCase()}</span>
+    </button>
   );
 
   return (
