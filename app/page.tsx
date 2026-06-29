@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import AiAssistant from "../components/AiAssistant";
 import Hero from "../components/Hero";
 import Experience from "../components/Experience";
 import ThingsIBuilt from "../components/ThingsIBuilt";
@@ -65,9 +64,6 @@ export default function Home() {
         </main>
 
         <Footer />
-
-        {/* Assistant Widget */}
-        <AiAssistant />
       </div>
     </LanguageProvider>
   );
