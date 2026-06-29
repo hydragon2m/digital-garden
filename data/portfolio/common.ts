@@ -172,7 +172,7 @@ export const seoData: SeoData = {
   description: "Back-end engineer tập trung vào microservices, identity server, SSO/OIDC/SAML và tối ưu database.",
   author: "Đỗ Quốc Huy",
   image: "/avatar.png",
-  url: "https://portfolio.quochuy.dev",
+  url: (process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "https://info.quochuy.xyz").replace(/\/$/, ""),
   keywords: [
     "Đỗ Quốc Huy",
     "Back-end Engineer",
