@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { greetings } from "../portfolio";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Languages } from "lucide-react";
+import { useLanguage } from "../app/LanguageContext";
 
 interface NavbarProps {
   darkMode: boolean;
@@ -12,6 +12,7 @@ interface NavbarProps {
 export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { language, setLanguage, t, content } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,12 +27,36 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { name: "Giới thiệu", href: "#about" },
-    { name: "Kinh nghiệm", href: "#experience" },
-    { name: "Dự án", href: "#projects" },
+    { name: t("navAbout"), href: "#" },
+    { name: t("navExperience"), href: "#experience" },
+    { name: t("navBuilt"), href: "#things-built" },
+    { name: t("navProjects"), href: "#projects" },
   //  { name: "Đánh giá", href: "#feedbacks" },
-    { name: "Liên hệ", href: "#contact" },
+    { name: t("navContact"), href: "#contact" },
   ];
+
+  const languageToggle = (
+    <div
+      className="flex items-center gap-1 rounded-full bg-zinc-100 dark:bg-zinc-800 p-1 text-xs font-bold text-zinc-700 dark:text-zinc-300"
+      aria-label={t("languageToggle")}
+    >
+      <Languages size={16} className="ml-1" />
+      {(["vi", "en"] as const).map((lang) => (
+        <button
+          key={lang}
+          onClick={() => setLanguage(lang)}
+          className={`min-w-8 rounded-full px-2 py-1 transition-colors ${
+            language === lang
+              ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-950"
+              : "hover:bg-zinc-200 dark:hover:bg-zinc-700"
+          }`}
+          aria-pressed={language === lang}
+        >
+          {lang.toUpperCase()}
+        </button>
+      ))}
+    </div>
+  );
 
   return (
     <nav
@@ -46,7 +71,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
           href="#"
           className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white hover:opacity-80 transition-opacity"
         >
-          {greetings.name}
+          {content.greetings.name}
         </a>
 
         {/* Desktop Nav */}
@@ -66,9 +91,11 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:scale-110 active:scale-95 transition-all"
             aria-label="Toggle Theme"
+            title={t("themeToggle")}
           >
             {darkMode ? <Sun size={18} /> : <Moon size={18} />}
           </button>
+          {languageToggle}
         </div>
 
         {/* Mobile Toggle Button */}
@@ -77,9 +104,11 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200"
             aria-label="Toggle Theme"
+            title={t("themeToggle")}
           >
             {darkMode ? <Sun size={18} /> : <Moon size={18} />}
           </button>
+          {languageToggle}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="text-zinc-800 dark:text-zinc-200"

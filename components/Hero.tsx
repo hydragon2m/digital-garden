@@ -1,10 +1,14 @@
 "use client";
 
 import React from "react";
-import { greetings, socialLinks } from "../portfolio";
+import { socialLinks } from "../portfolio";
 import Image from "next/image";
+import { useLanguage } from "../app/LanguageContext";
 
 export default function Hero() {
+  const { content, t } = useLanguage();
+  const { greetings } = content;
+
   return (
     <section className="relative min-h-screen bg-white dark:bg-zinc-950 flex items-center justify-center py-20">
       <div className="max-w-3xl mx-auto px-6 flex flex-col items-center text-center gap-8">
@@ -27,13 +31,13 @@ export default function Hero() {
             {greetings.name}
           </h1>
           <p className="text-xl text-zinc-600 dark:text-zinc-400">
-            Distributed Systems Architect
+            {t("heroTitle")}
           </p>
         </div>
 
         {/* Bio */}
         <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl">
-          Building scalable distributed systems with gRPC, RabbitMQ, and CQRS patterns. Specialized in enterprise authentication and microservices architecture.
+          {t("heroDescription")}
         </p>
 
         {/* CTA Buttons */}
@@ -50,7 +54,7 @@ export default function Hero() {
             href="#experience"
             className="px-6 py-3 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-lg transition-colors font-medium text-sm"
           >
-            Experience
+            {t("heroExperience")}
           </a>
           <a
             href={greetings.resumeLink}
@@ -58,7 +62,7 @@ export default function Hero() {
             rel="noopener noreferrer"
             className="px-6 py-3 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-lg transition-colors font-medium text-sm"
           >
-            Resume
+            {t("heroResume")}
           </a>
         </div>
       </div>

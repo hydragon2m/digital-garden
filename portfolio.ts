@@ -67,6 +67,15 @@ export interface ProjectType {
   };
 }
 
+export interface DeliverableType {
+  id: string;
+  category: string;
+  name: string;
+  description: string;
+  tags: string[];
+  achievement: string;
+}
+
 export interface EducationType {
   schoolName: string;
   subHeader: string;
@@ -419,11 +428,370 @@ export const aiQA = [
   }
 ];
 
+export type Language = "vi" | "en";
+
+export interface LocalizedPortfolioContent {
+  greetings: typeof greetings;
+  educationInfo: EducationType[];
+  experience: ExperienceType[];
+  projects: ProjectType[];
+  skillCategories: SkillCategory[];
+  deliverables: DeliverableType[];
+  aiQA: QAItem[];
+  contactFallback: { bio: string; location: string };
+  scale: Record<string, string[]>;
+}
+
+export const uiTranslations = {
+  vi: {
+    navAbout: "Giới thiệu",
+    navExperience: "Kinh nghiệm",
+    navBuilt: "Sản phẩm",
+    navProjects: "Dự án",
+    navContact: "Liên hệ",
+    themeToggle: "Đổi giao diện",
+    languageToggle: "Đổi ngôn ngữ",
+    heroTitle: "Kiến trúc sư Hệ thống Phân tán",
+    heroDescription:
+      "Xây dựng hệ thống phân tán có khả năng mở rộng với gRPC, RabbitMQ và CQRS. Tập trung vào xác thực doanh nghiệp và kiến trúc microservices.",
+    heroExperience: "Kinh nghiệm",
+    heroResume: "CV",
+    experienceTitle: "Kinh nghiệm",
+    builtTitle: "Sản phẩm tôi đã xây dựng",
+    projectsTitle: "Dự án",
+    educationTitle: "Học vấn",
+    contactTitle: "Liên hệ",
+    footerRights: "Bản quyền được bảo lưu.",
+    builtColumn: "Đã xây dựng",
+    scaleColumn: "Quy mô",
+    stackColumn: "Công nghệ",
+    metricsTitle: "Chỉ số",
+    highlightsTitle: "Điểm nổi bật",
+    architectureTitle: "Kiến trúc",
+    usersMetric: "Người dùng",
+    uptimeMetric: "Uptime",
+    latencyMetric: "Độ trễ",
+    gitlabStars: "GitLab Stars",
+    assistantLabel: "Hỏi trợ lý",
+    assistantTitle: "Huy AI Recruiter Bot",
+    assistantStatus: "Online và sẵn sàng hỗ trợ",
+    assistantPlaceholder: "Hỏi về kinh nghiệm, kỹ năng...",
+    assistantFallback:
+      "Xin lỗi, tôi chưa có thông tin chi tiết về câu hỏi này. Bạn có thể gõ các câu hỏi ngắn về 'kỹ năng', 'kinh nghiệm', 'dự án', hoặc 'liên hệ' để tôi hỗ trợ nhanh nhất nhé!",
+  },
+  en: {
+    navAbout: "About",
+    navExperience: "Experience",
+    navBuilt: "Built",
+    navProjects: "Projects",
+    navContact: "Contact",
+    themeToggle: "Toggle theme",
+    languageToggle: "Change language",
+    heroTitle: "Distributed Systems Architect",
+    heroDescription:
+      "Building scalable distributed systems with gRPC, RabbitMQ, and CQRS patterns. Specialized in enterprise authentication and microservices architecture.",
+    heroExperience: "Experience",
+    heroResume: "Resume",
+    experienceTitle: "Experience",
+    builtTitle: "Things I've Built",
+    projectsTitle: "Projects",
+    educationTitle: "Education",
+    contactTitle: "Get in Touch",
+    footerRights: "All rights reserved.",
+    builtColumn: "Built",
+    scaleColumn: "Scale",
+    stackColumn: "Stack",
+    metricsTitle: "Metrics",
+    highlightsTitle: "Highlights",
+    architectureTitle: "Architecture",
+    usersMetric: "Users",
+    uptimeMetric: "Uptime",
+    latencyMetric: "Latency",
+    gitlabStars: "GitLab Stars",
+    assistantLabel: "Ask Assistant",
+    assistantTitle: "Huy's AI Recruiter Bot",
+    assistantStatus: "Online and ready to assist",
+    assistantPlaceholder: "Ask about experience, skills...",
+    assistantFallback:
+      "Sorry, I do not have detailed information for that question yet. Try asking about skills, experience, projects, or contact information.",
+  },
+} as const;
+
+const deliverablesVi: DeliverableType[] = [
+  {
+    id: "sso_server",
+    category: "Auth & Security",
+    name: "SSO Identity Server",
+    description:
+      "Nền tảng đăng nhập một lần cấp doanh nghiệp hỗ trợ SAML 2.0, OAuth 2.0, OIDC, MFA và FIDO2.",
+    tags: ["NestJS", "MySQL", "Redis", "SAML", "OAuth2", "OIDC"],
+    achievement: "95 sao trên GitLab",
+  },
+  {
+    id: "grpc_gateway",
+    category: "Microservices",
+    name: "gRPC Service Mesh",
+    description:
+      "Lớp giao tiếp hiệu năng cao giữa các service bằng Protocol Buffers và cân bằng tải cho hệ phân tán.",
+    tags: ["gRPC", "Protocol Buffers", "Load Balancing"],
+    achievement: "Kết nối 20+ services",
+  },
+  {
+    id: "saga_pattern",
+    category: "Microservices",
+    name: "Distributed Saga Orchestrator",
+    description:
+      "Quản lý giao dịch phân tán tin cậy với compensating transactions và cơ chế phục hồi lỗi.",
+    tags: ["Saga Pattern", "RabbitMQ", "NestJS"],
+    achievement: "Đảm bảo không mất dữ liệu",
+  },
+  {
+    id: "outbox_pattern",
+    category: "Microservices",
+    name: "Transactional Outbox",
+    description:
+      "Hệ thống đảm bảo truyền tin at-least-once giữa các service bằng hàng đợi dựa trên database.",
+    tags: ["Outbox Pattern", "PostgreSQL", "Go Worker"],
+    achievement: "99.99% tỉ lệ gửi thành công",
+  },
+  {
+    id: "postgres_replication",
+    category: "Database Systems",
+    name: "Master-Replica Setup",
+    description:
+      "Kiến trúc PostgreSQL replication tách đọc/ghi để phục vụ workload dữ liệu cấp doanh nghiệp.",
+    tags: ["PostgreSQL", "Replication", "Query Optimization"],
+    achievement: "1M+ giao dịch mỗi ngày",
+  },
+  {
+    id: "redis_cache",
+    category: "Database Systems",
+    name: "Redis Cache Strategy",
+    description:
+      "Lớp cache hiệu năng cao cho session storage, distributed locking và chiến lược invalidation.",
+    tags: ["Redis", "Cache", "Session Management"],
+    achievement: "94%+ cache hit rate",
+  },
+  {
+    id: "api_gateway",
+    category: "Infrastructure",
+    name: "API Gateway & Routing",
+    description:
+      "Định tuyến request tập trung với xác thực, rate limiting và biến đổi request cho client apps.",
+    tags: ["NestJS", "REST", "GraphQL"],
+    achievement: "Phục vụ 1M+ request mỗi ngày",
+  },
+  {
+    id: "ci_cd",
+    category: "Infrastructure",
+    name: "CI/CD Pipeline Automation",
+    description:
+      "Pipeline triển khai tự động với Docker, kiểm thử và rollout staging/production.",
+    tags: ["Docker", "GitLab CI", "AWS EC2"],
+    achievement: "Triển khai không downtime",
+  },
+  {
+    id: "fido2_auth",
+    category: "Auth & Security",
+    name: "FIDO2 & WebAuthn",
+    description:
+      "Xác thực không mật khẩu bằng security key phần cứng và biometric verification.",
+    tags: ["FIDO2", "WebAuthn", "Biometric"],
+    achievement: "Chuẩn bảo mật doanh nghiệp",
+  },
+];
+
+export const localizedPortfolio: Record<Language, LocalizedPortfolioContent> = {
+  vi: {
+    greetings,
+    educationInfo,
+    experience,
+    projects,
+    skillCategories,
+    deliverables: deliverablesVi,
+    aiQA,
+    contactFallback: {
+      bio: "Back-end Developer & Digital Garden Owner",
+      location: "Thanh Xuân - Hà Nội",
+    },
+    scale: {
+      Beatcolor: [
+        "Xử lý hàng triệu ảnh/video",
+        "99.95% uptime trên 20+ services",
+        "1M+ requests mỗi ngày",
+      ],
+      LifeteX: [
+        "Hệ thống doanh nghiệp cho khối chính phủ và công ty",
+        "Hàng triệu giao dịch mỗi ngày",
+        "Tối ưu nhiều loại database",
+      ],
+      default: ["Nền tảng phát triển game"],
+    },
+  },
+  en: {
+    greetings: {
+      ...greetings,
+      subtitle: "Back-end Developer & Digital Garden Owner",
+      description:
+        "Welcome to my Digital Garden. This is where I document my research journey across backend engineering, distributed systems, SSO security, and day-to-day software development.",
+    },
+    educationInfo: [
+      {
+        schoolName: "Phu Xuan University (Hue)",
+        subHeader: "Bachelor of Information Technology",
+        duration: "2020 - 2024",
+        desc: "Graduated in Information Technology with a software development orientation.",
+      },
+    ],
+    experience: [
+      {
+        role: "Back-end Developer",
+        company: "Beatcolor",
+        date: "08/2025 - Present",
+        desc: "Beatcolor processes images, videos, and 3D assets for international customers and B2B solutions.",
+        descBullets: [
+          "Built REST, GraphQL, and Socket protocols.",
+          "Designed inter-service communication with gRPC and RabbitMQ.",
+          "Designed complex service architecture with CQRS, Saga, and Outbox.",
+          "Designed optimized storage with Database, Cache, and Snapshot strategies.",
+        ],
+      },
+      {
+        role: "Back-end Developer",
+        company: "LifeteX",
+        date: "05/2024 - 06/2025",
+        desc: "LifeteX provides comprehensive management software for enterprises and government organizations.",
+        descBullets: [
+          "Built RESTful APIs and GraphQL APIs.",
+          "Designed, queried, and optimized MySQL, PostgreSQL, and MongoDB databases.",
+          "Developed backend services with Node.js (NestJS/Express), Python, and Java.",
+          "Integrated authentication, authorization, and data encryption.",
+        ],
+      },
+      {
+        role: "Game Developer Intern",
+        company: "GSS",
+        date: "07/2023 - 10/2023",
+        desc: "Founded in 2010, GSS specializes in game programming and is a strong technology brand in Hue.",
+      },
+    ],
+    projects: [
+      {
+        ...projects[0],
+        desc: "A centralized user management server supporting SAML 2.0, OAuth 2.0, and OpenID Connect (OIDC). It integrates MFA, Google Authenticator, Social Login, FIDO2/WebAuthn, Single Sign-On (SSO), and Single Logout (SLO), with a direction similar to Apache Knox and WSO2 IS.",
+        highlights: [
+          "Implemented SAML 2.0 protocol with XML encryption",
+          "Multi-factor authentication (MFA) with Google Authenticator",
+          "FIDO2/WebAuthn for passwordless authentication",
+          "Single Sign-On (SSO) and Single Logout (SLO)",
+          "Session management with Redis cache (TTL-based)",
+        ],
+      },
+    ],
+    skillCategories,
+    deliverables: deliverablesVi.map((item) => {
+      const translations: Record<string, { description: string; achievement: string }> = {
+        sso_server: {
+          description:
+            "Enterprise-grade single sign-on platform supporting SAML 2.0, OAuth 2.0, OIDC with MFA and FIDO2 authentication.",
+          achievement: "95 stars on GitLab",
+        },
+        grpc_gateway: {
+          description:
+            "High-performance inter-service communication layer with protocol buffers and load balancing across distributed services.",
+          achievement: "20+ services connected",
+        },
+        saga_pattern: {
+          description:
+            "Reliable transaction management across microservices with compensating transactions and failure recovery.",
+          achievement: "Zero data loss guarantee",
+        },
+        outbox_pattern: {
+          description:
+            "Message reliability system ensuring at-least-once delivery between services using database-backed message queuing.",
+          achievement: "99.99% delivery rate",
+        },
+        postgres_replication: {
+          description:
+            "PostgreSQL replication architecture with read/write separation for enterprise-scale data workloads.",
+          achievement: "1M+ daily transactions",
+        },
+        redis_cache: {
+          description:
+            "High-performance caching layer with session storage, distributed locking, and cache invalidation patterns.",
+          achievement: "94%+ hit rate",
+        },
+        api_gateway: {
+          description:
+            "Centralized request routing with authentication, rate limiting, and request transformation for client applications.",
+          achievement: "Serving 1M+ daily requests",
+        },
+        ci_cd: {
+          description:
+            "Automated deployment pipeline with Docker containerization, testing, and staging/production rollout.",
+          achievement: "Zero-downtime deployments",
+        },
+        fido2_auth: {
+          description:
+            "Passwordless authentication using hardware security keys and biometric verification for enhanced security.",
+          achievement: "Enterprise security standard",
+        },
+      };
+      const en = translations[item.id];
+
+      return {
+        ...item,
+        description: en.description,
+        achievement: en.achievement,
+      };
+    }),
+    aiQA: [
+      {
+        keywords: ["hello", "hi", "who", "about", "intro", "introduce"],
+        answer:
+          "Hello! I am the virtual assistant for Do Quoc Huy. This Digital Garden shares Huy's work across NestJS, Python, gRPC, RabbitMQ, CQRS/Saga architecture, and SSO security. What would you like to explore?",
+      },
+      {
+        keywords: ["skill", "technology", "tech stack", "language"],
+        answer:
+          "Huy's main skills include Backend (NodeJS/NestJS, Express, FastAPI, Java), Database (MySQL, PostgreSQL, MongoDB, Redis), Microservices (REST, gRPC, RabbitMQ), DevOps (Docker, CI/CD, AWS EC2), and basic Frontend (React, Vue3, Uniapp).",
+      },
+      {
+        keywords: ["experience", "work", "company", "history"],
+        answer:
+          "Huy has worked at Beatcolor as a Backend Developer focused on gRPC, RabbitMQ, Saga, Outbox, and CQRS; at LifeteX as a Backend Developer focused on REST/GraphQL, databases, and encryption; and at GSS as a Game Developer Intern.",
+      },
+      {
+        keywords: ["sso", "identity", "oauth2", "oidc", "saml", "project"],
+        answer:
+          "Huy built SSO Identity Server with NestJS, MySQL, Redis, SAML 2.0, OAuth 2.0, and OIDC. It supports MFA, FIDO2/WebAuthn, Social Login, SSO, and SLO.",
+      },
+    ],
+    contactFallback: {
+      bio: "Back-end Developer & Digital Garden Owner",
+      location: "Thanh Xuan - Hanoi",
+    },
+    scale: {
+      Beatcolor: [
+        "Processing millions of images/videos",
+        "99.95% uptime across 20+ services",
+        "1M+ requests daily",
+      ],
+      LifeteX: [
+        "Enterprise systems for government & corporate",
+        "Millions of daily transactions",
+        "Multi-database optimization",
+      ],
+      default: ["Game development platform"],
+    },
+  },
+};
+
 export const seoData = {
   title: greetings.name + " | " + greetings.subtitle,
   description: greetings.description,
   author: greetings.name,
-  image: "https://avatars.githubusercontent.com/u/59178380?v=4",
+  image: "/avatar.png",
   url: "https://portfolio.quochuy.dev",
   keywords: [
     greetings.name,

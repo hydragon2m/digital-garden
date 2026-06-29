@@ -1,15 +1,18 @@
 "use client";
 
 import React from "react";
-import { experience } from "../portfolio";
+import { useLanguage } from "../app/LanguageContext";
 
 export default function Experience() {
+  const { content, t } = useLanguage();
+  const { experience } = content;
+
   return (
     <section id="experience" className="py-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-12">
-          Experience
+          {t("experienceTitle")}
         </h2>
 
         <div className="space-y-6">
@@ -38,7 +41,7 @@ export default function Experience() {
                   
                   {/* BUILT Column */}
                   <div className="flex flex-col gap-3">
-                    <h5 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">Built</h5>
+                    <h5 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">{t("builtColumn")}</h5>
                     <div className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
                       {exp.descBullets && exp.descBullets.length > 0 ? (
                         exp.descBullets.map((bullet, idx) => (
@@ -52,29 +55,17 @@ export default function Experience() {
 
                   {/* SCALE Column */}
                   <div className="flex flex-col gap-3">
-                    <h5 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">Scale</h5>
+                    <h5 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">{t("scaleColumn")}</h5>
                     <div className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-                      {exp.company === "Beatcolor" ? (
-                        <>
-                          <p className="leading-relaxed">Processing millions of images/videos</p>
-                          <p className="leading-relaxed">99.95% uptime across 20+ services</p>
-                          <p className="leading-relaxed">1M+ requests daily</p>
-                        </>
-                      ) : exp.company === "LifeteX" ? (
-                        <>
-                          <p className="leading-relaxed">Enterprise systems for government & corporate</p>
-                          <p className="leading-relaxed">Millions of daily transactions</p>
-                          <p className="leading-relaxed">Multi-database optimization</p>
-                        </>
-                      ) : (
-                        <p className="leading-relaxed">Game development platform</p>
-                      )}
+                      {(content.scale[exp.company] || content.scale.default).map((item) => (
+                        <p key={item} className="leading-relaxed">{item}</p>
+                      ))}
                     </div>
                   </div>
 
                   {/* STACK Column */}
                   <div className="flex flex-col gap-3">
-                    <h5 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">Stack</h5>
+                    <h5 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">{t("stackColumn")}</h5>
                     <div className="flex flex-wrap gap-2">
                       {exp.company === "Beatcolor" ? (
                         <>

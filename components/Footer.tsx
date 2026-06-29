@@ -1,16 +1,18 @@
 "use client";
 
 import React from "react";
-import { greetings, socialLinks } from "../portfolio";
+import { socialLinks } from "../portfolio";
+import { useLanguage } from "../app/LanguageContext";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { content, t } = useLanguage();
 
   return (
     <footer className="py-12 border-t border-zinc-200/50 dark:border-zinc-800/50 bg-white dark:bg-zinc-950">
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <p className="text-sm text-zinc-500 dark:text-zinc-400 text-center md:text-left">
-          © {currentYear} {greetings.name}. Bản quyền được bảo lưu.
+          © {currentYear} {content.greetings.name}. {t("footerRights")}
         </p>
 
         {/* Small Social Icon Set */}

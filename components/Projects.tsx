@@ -1,15 +1,18 @@
 "use client";
 
 import React from "react";
-import { projects } from "../portfolio";
+import { useLanguage } from "../app/LanguageContext";
 
 export default function Projects() {
+  const { content, t } = useLanguage();
+  const { projects } = content;
+
   return (
     <section id="projects" className="py-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-12">
-          Projects
+          {t("projectsTitle")}
         </h2>
 
         {/* Projects */}
@@ -25,7 +28,7 @@ export default function Projects() {
                   {project.name}
                 </h3>
                 {project.stars && (
-                  <p className="text-xs text-zinc-600 dark:text-zinc-400">{project.stars} GitLab Stars</p>
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400">{project.stars} {t("gitlabStars")}</p>
                 )}
               </div>
 
@@ -40,12 +43,12 @@ export default function Projects() {
                 {project.metrics && (
                   <div>
                     <h4 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide mb-3">
-                      Metrics
+                      {t("metricsTitle")}
                     </h4>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                       {project.metrics.users && (
                         <div>
-                          <p className="text-[11px] text-zinc-600 dark:text-zinc-400 mb-1">Users</p>
+                          <p className="text-[11px] text-zinc-600 dark:text-zinc-400 mb-1">{t("usersMetric")}</p>
                           <p className="text-sm font-bold text-zinc-900 dark:text-white">{project.metrics.users}</p>
                         </div>
                       )}
@@ -57,13 +60,13 @@ export default function Projects() {
                       )}
                       {project.metrics.uptime && (
                         <div>
-                          <p className="text-[11px] text-zinc-600 dark:text-zinc-400 mb-1">Uptime</p>
+                          <p className="text-[11px] text-zinc-600 dark:text-zinc-400 mb-1">{t("uptimeMetric")}</p>
                           <p className="text-sm font-bold text-zinc-900 dark:text-white">{project.metrics.uptime}</p>
                         </div>
                       )}
                       {project.metrics.latency && (
                         <div>
-                          <p className="text-[11px] text-zinc-600 dark:text-zinc-400 mb-1">Latency</p>
+                          <p className="text-[11px] text-zinc-600 dark:text-zinc-400 mb-1">{t("latencyMetric")}</p>
                           <p className="text-sm font-bold text-zinc-900 dark:text-white">{project.metrics.latency}</p>
                         </div>
                       )}
@@ -75,7 +78,7 @@ export default function Projects() {
                 {project.highlights && project.highlights.length > 0 && (
                   <div>
                     <h4 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide mb-3">
-                      Highlights
+                      {t("highlightsTitle")}
                     </h4>
                     <ul className="space-y-1.5">
                       {project.highlights.map((highlight, idx) => (
@@ -92,7 +95,7 @@ export default function Projects() {
               {project.architecture && (
                 <div className="mb-6 p-4 rounded-lg bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
                   <h4 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide mb-2">
-                    Architecture
+                    {t("architectureTitle")}
                   </h4>
                   <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                     {project.architecture.description}

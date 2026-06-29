@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { socialLinks } from "../portfolio";
+import { useLanguage } from "../app/LanguageContext";
 
 interface GithubData {
   bio: string;
@@ -10,6 +11,7 @@ interface GithubData {
 
 export default function Contact() {
   const [profile, setProfile] = useState<GithubData | null>(null);
+  const { content, t } = useLanguage();
 
   useEffect(() => {
     const githubUrl = socialLinks.github || "https://gitlab.com/DQH8391";
@@ -19,17 +21,17 @@ export default function Contact() {
       .then((res) => res.json())
       .then((data) => {
         setProfile({
-          bio: data.bio || "Back-end Developer & Digital Garden Owner",
-          location: data.location || "Thanh Xuân - Hà Nội",
+          bio: data.bio || content.contactFallback.bio,
+          location: data.location || content.contactFallback.location,
         });
       })
       .catch(() => {
         setProfile({
-          bio: "Back-end Developer & Digital Garden Owner",
-          location: "Thanh Xuân - Hà Nội",
+          bio: content.contactFallback.bio,
+          location: content.contactFallback.location,
         });
       });
-  }, []);
+  }, [content.contactFallback.bio, content.contactFallback.location]);
 
   if (!profile) {
     return null;
@@ -42,7 +44,7 @@ export default function Contact() {
           {/* Heading */}
           <div className="flex flex-col gap-2">
             <h2 className="text-4xl font-bold text-zinc-900 dark:text-white">
-              Get in Touch
+              {t("contactTitle")}
             </h2>
             <p className="text-zinc-600 dark:text-zinc-400 text-lg">
               {profile.bio}

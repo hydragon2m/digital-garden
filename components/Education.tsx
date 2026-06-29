@@ -1,14 +1,17 @@
 "use client";
 
 import React from "react";
-import { educationInfo } from "../portfolio";
+import { useLanguage } from "../app/LanguageContext";
 
 export default function Education() {
+  const { content, t } = useLanguage();
+  const { educationInfo } = content;
+
   return (
     <section id="education" className="py-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-12">
-          Education
+          {t("educationTitle")}
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

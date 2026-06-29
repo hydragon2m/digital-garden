@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { aiQA, greetings } from "../portfolio";
 import { MessageSquare, X, Send, Bot } from "lucide-react";
+import { useLanguage } from "../app/LanguageContext";
 
 interface Message {
   sender: "user" | "bot";
@@ -10,12 +10,27 @@ interface Message {
 }
 
 export default function AiAssistant() {
+  const { content, language, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState<Message[]>([
-    { sender: "bot", text: `Xin chào! Tôi là Trợ lý Tuyển dụng ảo của anh ${greetings.name}. Bạn cần tìm hiểu thông tin gì về anh ${greetings.name.split(" ").pop()} (kinh nghiệm, kỹ năng, dự án, thông tin liên hệ...)?` },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMessages([
+        {
+          sender: "bot",
+          text:
+            language === "en"
+              ? `Hello! I am the virtual recruiter assistant for ${content.greetings.name}. Ask me about experience, skills, projects, or contact information.`
+              : `Xin chào! Tôi là Trợ lý Tuyển dụng ảo của anh ${content.greetings.name}. Bạn cần tìm hiểu thông tin gì về anh ${content.greetings.name.split(" ").pop()} (kinh nghiệm, kỹ năng, dự án, thông tin liên hệ...)?`,
+        },
+      ]);
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, [content.greetings.name, language]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -33,13 +48,13 @@ export default function AiAssistant() {
 
     // Simple AI Answer processing based on keyword matches
     setTimeout(() => {
-      const matchedQA = aiQA.find((item) =>
+      const matchedQA = content.aiQA.find((item) =>
         item.keywords.some((kw) => userMsg.toLowerCase().includes(kw))
       );
 
       const botReply = matchedQA
         ? matchedQA.answer
-        : "Xin lỗi, tôi chưa có thông tin chi tiết về câu hỏi này. Bạn có thể gõ các câu hỏi ngắn về 'kỹ năng', 'kinh nghiệm', 'dự án', hoặc 'liên hệ' để tôi hỗ trợ nhanh nhất nhé!";
+        : t("assistantFallback");
 
       setMessages((prev) => [...prev, { sender: "bot" as const, text: botReply }]);
     }, 800);
@@ -51,7 +66,7 @@ export default function AiAssistant() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-cyan-500 text-white shadow-xl hover:scale-110 active:scale-95 hover:bg-cyan-600 transition-all cursor-pointer"
-        aria-label="Ask Assistant"
+        aria-label={t("assistantLabel")}
       >
         {isOpen ? <X size={24} /> : <MessageSquare size={24} />}
       </button>
@@ -63,8 +78,8 @@ export default function AiAssistant() {
           <div className="bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-3.5 flex items-center gap-3 text-white">
             <Bot size={22} className="text-white animate-bounce" />
             <div>
-              <h3 className="text-sm font-bold">{"Huy's AI Recruiter Bot"}</h3>
-              <p className="text-[10px] text-white/80">Online & Ready to assist</p>
+              <h3 className="text-sm font-bold">{t("assistantTitle")}</h3>
+              <p className="text-[10px] text-white/80">{t("assistantStatus")}</p>
             </div>
           </div>
 
@@ -91,7 +106,7 @@ export default function AiAssistant() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Hỏi về kinh nghiệm, kỹ năng..."
+              placeholder={t("assistantPlaceholder")}
               className="flex-1 px-3 py-2 text-xs sm:text-sm border border-zinc-200 dark:border-zinc-800 rounded-xl bg-transparent focus:outline-none focus:border-cyan-500 text-zinc-900 dark:text-white"
             />
             <button
