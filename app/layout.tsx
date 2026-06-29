@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(seoData.url),
   title: seoData.title,
   description: seoData.description,
   authors: [{ name: seoData.author }],
