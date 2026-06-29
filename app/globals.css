@@ -22,6 +22,13 @@ body {
   transition-property: background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 /* Custom animations for the engineer dashboard */

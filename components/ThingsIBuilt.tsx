@@ -7,7 +7,7 @@ export default function ThingsIBuilt() {
   const { content, t } = useLanguage();
 
   return (
-    <section id="things-built" className="py-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+    <section id="things-built" className="py-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 snap-start scroll-mt-24 md:scroll-mt-28">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <h2 className="text-4xl font-bold text-zinc-900 dark:text-white mb-12">

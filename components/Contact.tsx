@@ -38,7 +38,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-16 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+    <section id="contact" className="py-16 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 snap-start scroll-mt-24 md:scroll-mt-28">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col items-center text-center gap-8">
           {/* Heading */}

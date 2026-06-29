@@ -12,6 +12,7 @@ interface NavbarProps {
 export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("top");
   const { language, setLanguage, t, content } = useLanguage();
 
   useEffect(() => {
@@ -26,8 +27,37 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const sectionIds = ["top", "experience", "things-built", "projects", "education", "contact"];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target.id) {
+          setActiveSection(visible.target.id);
+        }
+      },
+      {
+        root: null,
+        threshold: [0.2, 0.35, 0.5, 0.65],
+        rootMargin: "-20% 0px -55% 0px",
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   const navLinks = [
-    { name: t("navAbout"), href: "#" },
+    { name: t("navAbout"), href: "#top" },
     { name: t("navExperience"), href: "#experience" },
     { name: t("navBuilt"), href: "#things-built" },
     { name: t("navProjects"), href: "#projects" },
@@ -80,7 +110,11 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors"
+              className={`text-sm font-medium transition-colors ${
+                activeSection === link.href.replace("#", "")
+                  ? "text-zinc-900 dark:text-white"
+                  : "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
+              }`}
             >
               {link.name}
             </a>
@@ -126,7 +160,11 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
               key={link.href}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-base font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white py-2"
+              className={`text-base font-medium py-2 ${
+                activeSection === link.href.replace("#", "")
+                  ? "text-zinc-950 dark:text-white"
+                  : "text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white"
+              }`}
             >
               {link.name}
             </a>
