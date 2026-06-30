@@ -3,7 +3,7 @@ import type { GraphData, Note, SeoData, SocialLinks, SystemArchitecture } from "
 export const socialLinks: SocialLinks = {
   email: "mailto:dohuy8391@gmail.com",
   phone: "0337 998 303",
-  linkedin: "https://linkedin.com/in/quochuy",
+  linkedin: "https://www.linkedin.com/in/itdqh",
   github: "",
   gitlab: "https://gitlab.com/DQH8391",
   twitter: "",
