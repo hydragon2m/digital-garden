@@ -168,7 +168,7 @@ Ghi chú này ghi lại quá trình tôi nghiên cứu giao diện và cơ chế
 ];
 
 export const seoData: SeoData = {
-  title: "Đỗ Quốc Huy | Software Engineer",
+  title: "Backend Developer | Distributed Systems & Security",
   description: "Software engineer tập trung vào backend systems, microservices, identity server, SSO/OIDC/SAML và tối ưu database.",
   author: "Đỗ Quốc Huy",
   image: "/opengraph-image",
