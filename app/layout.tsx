@@ -65,10 +65,33 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": seoData.author,
-    "alternateName": ["Do Quoc Huy", "quochuy.xyz", "info.quochuy.xyz"],
-    "url": seoData.url,
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${seoData.url}/#website`,
+        "url": seoData.url,
+        "name": seoData.author,
+        "alternateName": ["Do Quoc Huy"],
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${seoData.url}/#webpage`,
+        "url": seoData.url,
+        "name": seoData.title,
+        "isPartOf": { "@id": `${seoData.url}/#website` },
+      },
+      {
+        "@type": "Person",
+        "@id": `${seoData.url}/#person`,
+        "name": seoData.author,
+        "url": seoData.url,
+        "jobTitle": "Backend Developer",
+        "sameAs": [
+          "https://www.linkedin.com/in/itdqh",
+          "https://gitlab.com/DQH8391"
+        ]
+      }
+    ]
   };
 
   return (
