@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { socialLinks } from "../portfolio";
 import Image from "next/image";
 import { useLanguage } from "../app/LanguageContext";
@@ -15,53 +15,63 @@ export default function Hero() {
   const [isHovered, setIsHovered] = useState(false);
 
   // Typewriter effect configuration
-  const words = language === "vi"
-    ? ["Backend Systems", "SSO & Bảo mật", "Kiến trúc Microservices", "Tối ưu hóa Database"]
-    : ["Backend Systems", "SSO & Security", "Microservices Architecture", "Database Optimization"];
+  const words = useMemo(
+    () =>
+      language === "vi"
+        ? ["Backend Systems", "SSO & Bảo mật", "Kiến trúc Microservices", "Tối ưu hóa Database"]
+        : ["Backend Systems", "SSO & Security", "Microservices Architecture", "Database Optimization"],
+    [language]
+  );
 
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(150);
 
   useEffect(() => {
-    // Reset state if language changes
-    setCurrentWordIndex(0);
-    setCurrentText("");
-    setIsDeleting(false);
+    const timer = window.setTimeout(() => {
+      setCurrentWordIndex(0);
+      setCurrentText("");
+      setIsDeleting(false);
+    }, 0);
+
+    return () => window.clearTimeout(timer);
   }, [language]);
 
   useEffect(() => {
     const activeWord = words[currentWordIndex];
     if (!activeWord) return;
 
-    let timer: NodeJS.Timeout;
+    let timer: number | undefined;
 
     if (!isDeleting) {
-      timer = setTimeout(() => {
-        setCurrentText(activeWord.substring(0, currentText.length + 1));
-        setTypingSpeed(100);
-      }, typingSpeed);
-
       if (currentText === activeWord) {
-        timer = setTimeout(() => {
+        timer = window.setTimeout(() => {
           setIsDeleting(true);
         }, 1800); // Wait before starting deletion
+      } else {
+        timer = window.setTimeout(() => {
+          setCurrentText(activeWord.substring(0, currentText.length + 1));
+        }, 100);
       }
     } else {
-      timer = setTimeout(() => {
-        setCurrentText(activeWord.substring(0, currentText.length - 1));
-        setTypingSpeed(50);
-      }, typingSpeed);
-
       if (currentText === "") {
-        setIsDeleting(false);
-        setCurrentWordIndex((prev) => (prev + 1) % words.length);
+        timer = window.setTimeout(() => {
+          setIsDeleting(false);
+          setCurrentWordIndex((prev) => (prev + 1) % words.length);
+        }, 50);
+      } else {
+        timer = window.setTimeout(() => {
+          setCurrentText(activeWord.substring(0, currentText.length - 1));
+        }, 50);
       }
     }
 
-    return () => clearTimeout(timer);
-  }, [currentText, isDeleting, currentWordIndex, language]);
+    return () => {
+      if (timer !== undefined) {
+        window.clearTimeout(timer);
+      }
+    };
+  }, [currentText, isDeleting, currentWordIndex, language, words]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;

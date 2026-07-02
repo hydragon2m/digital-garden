@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon, Languages } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useLanguage } from "../app/LanguageContext";
 
 interface NavbarProps {
