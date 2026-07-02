@@ -101,7 +101,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     { name: t("navExperience"), href: "#experience" },
     { name: t("navBuilt"), href: "#things-built" },
     { name: t("navProjects"), href: "#projects" },
-  //  { name: "Đánh giá", href: "#feedbacks" },
+    { name: t("navEducation"), href: "#education" },
     { name: t("navContact"), href: "#contact" },
   ];
 

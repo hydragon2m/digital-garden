@@ -92,3 +92,17 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #3f3f46;
 }
+
+/* Premium Grid Lines Background (Blueprint Style) */
+.bg-grid-lines {
+  background-image: 
+    linear-gradient(rgba(9, 9, 11, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(9, 9, 11, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+:where(.dark, .dark *) .bg-grid-lines {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+}
