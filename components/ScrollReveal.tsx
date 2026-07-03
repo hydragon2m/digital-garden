@@ -21,8 +21,8 @@ export default function ScrollReveal({
     if (!element) return;
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const timer = window.setTimeout(() => setVisible(true), 0);
-      return () => window.clearTimeout(timer);
+      setVisible(true);
+      return;
     }
 
     const observer = new IntersectionObserver(
@@ -32,24 +32,18 @@ export default function ScrollReveal({
           observer.unobserve(entry.target);
         }
       },
-      {
-        rootMargin: "0px 0px -12% 0px",
-        threshold: 0.12,
-      }
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
     );
 
     observer.observe(element);
-
     return () => observer.disconnect();
   }, []);
 
   return (
     <div
       ref={ref}
-      className={`transition-[opacity,transform,filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform motion-reduce:transition-none ${
-        visible
-          ? "translate-y-0 opacity-100 blur-0"
-          : "translate-y-8 opacity-0 blur-[1px]"
+      className={`transition-opacity duration-500 ease-out motion-reduce:transition-none ${
+        visible ? "opacity-100" : "opacity-0"
       } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >

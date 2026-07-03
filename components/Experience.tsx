@@ -10,91 +10,82 @@ export default function Experience() {
   const { experience } = content;
 
   return (
-    <section id="experience" className="min-h-[100svh] pt-16 pb-20 md:pt-20 md:pb-24 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 scroll-mt-20 md:scroll-mt-24">
+    <section
+      id="experience"
+      className="pt-16 pb-20 md:pt-20 md:pb-24 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 scroll-mt-20 md:scroll-mt-24"
+    >
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading title={t("experienceTitle")} />
 
-        <div className="space-y-6">
-          {experience.map((exp, index) => {
-            return (
-              <ScrollReveal
-                key={index}
-                delay={index * 110}
-                className="bg-white dark:bg-zinc-900 rounded-lg p-8 border border-zinc-200 dark:border-zinc-800 transition-all duration-300"
-              >
-                {/* Header Row: Company Info + Date */}
-                <div className="mb-6 pb-6 border-b border-zinc-200 dark:border-zinc-800">
-                  {/* Company Info */}
-                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-1">
-                    {exp.company}
-                  </h3>
-                  <h4 className="text-sm font-semibold text-zinc-600 dark:text-zinc-400 mb-2">
-                    {exp.role}
+        <div className="flex flex-col divide-y divide-zinc-200 dark:divide-zinc-800">
+          {experience.map((exp, index) => (
+            <ScrollReveal
+              key={index}
+              delay={index * 80}
+              className="py-10 first:pt-0 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10"
+            >
+              {/* Left — company / role / date */}
+              <div className="md:col-span-3 flex flex-col gap-1">
+                <h3 className="text-base font-bold text-zinc-900 dark:text-white">
+                  {exp.company}
+                </h3>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">{exp.role}</p>
+                <p className="text-xs font-mono text-zinc-400 dark:text-zinc-600 mt-1">{exp.date}</p>
+
+                {/* Stack tags */}
+                {exp.stack && exp.stack.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mt-3">
+                    {exp.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800 px-2 py-0.5 rounded-sm"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Right — bullets + scale */}
+              <div className="md:col-span-9 grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Built */}
+                <div className="flex flex-col gap-3">
+                  <h4 className="text-[11px] font-bold text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">
+                    {t("builtColumn")}
                   </h4>
-                  <span className="text-xs text-zinc-500 dark:text-zinc-500">
-                    {exp.date}
-                  </span>
+                  <div className="flex flex-col gap-2">
+                    {exp.descBullets && exp.descBullets.length > 0 ? (
+                      exp.descBullets.map((bullet, idx) => (
+                        <p key={idx} className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                          {bullet}
+                        </p>
+                      ))
+                    ) : (
+                      <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                        {exp.desc}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
-                {/* Three-Column Layout: Built + Scale + Stack */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  
-                  {/* BUILT Column */}
-                  <div className="flex flex-col gap-3">
-                    <h5 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">{t("builtColumn")}</h5>
-                    <div className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-                      {exp.descBullets && exp.descBullets.length > 0 ? (
-                        exp.descBullets.map((bullet, idx) => (
-                          <p key={idx} className="leading-relaxed">• {bullet}</p>
-                        ))
-                      ) : (
-                        <p className="leading-relaxed">{exp.desc}</p>
-                      )}
-                    </div>
+                {/* Scale */}
+                <div className="flex flex-col gap-3">
+                  <h4 className="text-[11px] font-bold text-zinc-400 dark:text-zinc-600 uppercase tracking-widest">
+                    {t("scaleColumn")}
+                  </h4>
+                  <div className="flex flex-col gap-2">
+                    {(content.scale[exp.company] || content.scale.default).map((item) => (
+                      <p key={item} className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                        {item}
+                      </p>
+                    ))}
                   </div>
-
-                  {/* SCALE Column */}
-                  <div className="flex flex-col gap-3">
-                    <h5 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">{t("scaleColumn")}</h5>
-                    <div className="space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-                      {(content.scale[exp.company] || content.scale.default).map((item) => (
-                        <p key={item} className="leading-relaxed">{item}</p>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* STACK Column */}
-                  <div className="flex flex-col gap-3">
-                    <h5 className="text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wide">{t("stackColumn")}</h5>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.company === "Beatcolor" ? (
-                        <>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">NestJS</span>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">gRPC</span>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">RabbitMQ</span>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">PostgreSQL</span>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">Docker</span>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">CQRS</span>
-                        </>
-                      ) : exp.company === "LifeteX" ? (
-                        <>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">Node.js</span>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">MySQL</span>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">PostgreSQL</span>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">MongoDB</span>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">Redis</span>
-                          <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">Python</span>
-                        </>
-                      ) : (
-                        <span className="px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-300 dark:border-zinc-700">Game Dev</span>
-                      )}
-                    </div>
-                  </div>
-
                 </div>
-              </ScrollReveal>
-            );
-          })}
+              </div>
+
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>

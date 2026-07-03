@@ -92,6 +92,7 @@ export interface ExperienceType {
   date: string;
   desc: string;
   descBullets?: string[];
+  stack?: string[];
 }
 
 export interface Greetings {

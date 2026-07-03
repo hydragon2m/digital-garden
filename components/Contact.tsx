@@ -7,71 +7,71 @@ import SectionHeading from "./SectionHeading";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Contact() {
-  const { content, t } = useLanguage();
+  const { content, t, language } = useLanguage();
   const profile = content.contactFallback;
 
+  const links = [
+    { label: "Email", href: socialLinks.email },
+    { label: "LinkedIn", href: socialLinks.linkedin },
+    { label: "GitLab", href: socialLinks.gitlab },
+    { label: "Twitter", href: socialLinks.twitter },
+  ].filter((l) => l.href);
+
   return (
-    <section id="contact" className="min-h-[80svh] pt-16 pb-20 md:pt-20 md:pb-24 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 scroll-mt-20 md:scroll-mt-24">
+    <section
+      id="contact"
+      className="pt-16 pb-20 md:pt-20 md:pb-24 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800 scroll-mt-20 md:scroll-mt-24"
+    >
       <div className="max-w-6xl mx-auto px-6">
         <SectionHeading title={t("contactTitle")} />
-        <ScrollReveal className="flex flex-col items-center text-center gap-8" delay={90}>
-          {/* Heading */}
-          <div className="flex flex-col gap-2">
-            <p className="text-zinc-600 dark:text-zinc-400 text-lg">
+
+        <ScrollReveal className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start" delay={60}>
+
+          {/* Left — headline */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            {/* Open to Work inline */}
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">
+                {language === "vi" ? "Đang tìm kiếm cơ hội mới" : "Open to New Opportunities"}
+              </span>
+            </div>
+
+            <h3 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tracking-tight leading-tight">
+              {language === "vi"
+                ? "Hãy cùng xây dựng\nđiều gì đó tốt hơn."
+                : "Let's build something\ngreat together."}
+            </h3>
+
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-md">
               {profile.bio}
+              {profile.location && (
+                <span className="block mt-1 text-zinc-400 dark:text-zinc-500">
+                  {profile.location}
+                </span>
+              )}
             </p>
           </div>
 
-          {/* Contact Info */}
-          <div className="flex flex-col items-center gap-4">
-            {profile.location && (
-              <p className="text-sm text-zinc-600 dark:text-zinc-500">
-                {profile.location}
-              </p>
-            )}
-            
-            {/* Social Links */}
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              {socialLinks.email && (
-                <a
-                  href={socialLinks.email}
-                  className="px-4 py-2 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-lg transition-colors font-medium text-sm"
-                >
-                  Email
-                </a>
-              )}
-              {socialLinks.linkedin && (
-                <a
-                  href={socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-lg transition-colors font-medium text-sm"
-                >
-                  LinkedIn
-                </a>
-              )}
-              {socialLinks.gitlab && (
-                <a
-                  href={socialLinks.gitlab}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-lg transition-colors font-medium text-sm"
-                >
-                  GitLab
-                </a>
-              )}
-              {socialLinks.twitter && socialLinks.twitter && (
-                <a
-                  href={socialLinks.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-lg transition-colors font-medium text-sm"
-                >
-                  Twitter
-                </a>
-              )}
-            </div>
+          {/* Right — links */}
+          <div className="lg:col-span-5 flex flex-col gap-0 divide-y divide-zinc-200 dark:divide-zinc-800">
+            {links.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target={label === "Email" ? undefined : "_blank"}
+                rel={label === "Email" ? undefined : "noopener noreferrer"}
+                className="flex items-center justify-between py-4 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors group"
+              >
+                <span>{label}</span>
+                <span className="text-zinc-300 dark:text-zinc-700 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors text-xs">↗</span>
+              </a>
+            ))}
           </div>
+
         </ScrollReveal>
       </div>
     </section>

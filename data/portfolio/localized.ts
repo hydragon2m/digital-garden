@@ -138,6 +138,7 @@ const experienceVi: ExperienceType[] = [
       "Áp dụng CQRS, Saga và Outbox cho các luồng nghiệp vụ cần tính nhất quán cao giữa nhiều service.",
       "Tối ưu truy cập dữ liệu bằng chiến lược cache, snapshot và tổ chức lưu trữ phù hợp với từng loại tác vụ.",
     ],
+    stack: ["NestJS", "gRPC", "RabbitMQ", "PostgreSQL", "Docker", "CQRS"],
   },
   {
     role: "Software Engineer",
@@ -150,6 +151,7 @@ const experienceVi: ExperienceType[] = [
       "Phát triển backend bằng Node.js (NestJS/Express), Python và Java tùy theo bài toán.",
       "Tích hợp authentication, authorization và mã hóa dữ liệu cho các luồng nghiệp vụ quan trọng.",
     ],
+    stack: ["Node.js", "MySQL", "PostgreSQL", "MongoDB", "Redis", "Python"],
   },
   {
     role: "Game Developer Intern",
@@ -157,6 +159,7 @@ const experienceVi: ExperienceType[] = [
     date: "07/2023 - 10/2023",
     desc: "Thành lập năm 2010, chuyên về lập trình game. Thương hiệu công nghệ mạnh tại Thừa Thiên Huế.",
     descBullets: ["Tham gia phát triển game với Unity/C# và làm quen quy trình làm việc nhóm cùng version control."],
+    stack: ["Unity", "C#"],
   }
 ];
 
@@ -295,6 +298,7 @@ const experienceEn: ExperienceType[] = [
       "Designed complex service architecture with CQRS, Saga, and Outbox.",
       "Designed optimized storage with Database, Cache, and Snapshot strategies.",
     ],
+    stack: ["NestJS", "gRPC", "RabbitMQ", "PostgreSQL", "Docker", "CQRS"],
   },
   {
     role: "Software Engineer",
@@ -307,12 +311,14 @@ const experienceEn: ExperienceType[] = [
       "Developed backend services with Node.js (NestJS/Express), Python, and Java.",
       "Integrated authentication, authorization, and data encryption.",
     ],
+    stack: ["Node.js", "MySQL", "PostgreSQL", "MongoDB", "Redis", "Python"],
   },
   {
     role: "Game Developer Intern",
     company: "GSS",
     date: "07/2023 - 10/2023",
     desc: "Founded in 2010, GSS specializes in game programming and is a strong technology brand in Hue.",
+    stack: ["Unity", "C#"],
   },
 ];
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Sun, Moon, Menu, X } from "lucide-react";
 import { useLanguage } from "../app/LanguageContext";
 
 interface NavbarProps {
@@ -31,27 +31,20 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
         const next = sections[index + 1];
         const start = section.offsetTop;
         const end = next ? next.offsetTop : document.documentElement.scrollHeight;
-
         return readingLine >= start && readingLine < end;
       });
 
       if (current) {
         setActiveSection(current.id);
-
         const nextHash = current.id === "top" ? "" : `#${current.id}`;
         if (window.location.hash !== nextHash) {
-          window.history.replaceState(
-            null,
-            "",
-            `${window.location.pathname}${window.location.search}${nextHash}`
-          );
+          window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${nextHash}`);
         }
       }
     };
 
     const handleScroll = () => {
       if (ticking) return;
-
       ticking = true;
       window.requestAnimationFrame(() => {
         setScrolled(window.scrollY > 20);
@@ -63,37 +56,24 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     updateActiveSection();
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", updateActiveSection);
-    window.addEventListener("hashchange", updateActiveSection);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", updateActiveSection);
-      window.removeEventListener("hashchange", updateActiveSection);
     };
   }, []);
 
   const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     event.preventDefault();
-
     const id = href.replace("#", "");
     const target = document.getElementById(id);
     if (!target) return;
-
     const navOffset = 72;
     const top = id === "top" ? 0 : target.getBoundingClientRect().top + window.scrollY - navOffset;
     const nextHash = id === "top" ? "" : href;
-
     setIsOpen(false);
     setActiveSection(id);
-    window.history.replaceState(
-      null,
-      "",
-      `${window.location.pathname}${window.location.search}${nextHash}`
-    );
-    window.scrollTo({
-      top,
-      behavior: "smooth",
-    });
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${nextHash}`);
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   const navLinks = [
@@ -105,111 +85,101 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     { name: t("navContact"), href: "#contact" },
   ];
 
-  const languageToggle = (
-    <button
-      onClick={() => setLanguage(language === "vi" ? "en" : "vi")}
-      className="group flex items-center justify-center rounded-full border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 px-3 py-1.5 text-xs font-bold text-zinc-700 dark:text-zinc-300 transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm min-w-[42px]"
-      aria-label={t("languageToggle")}
-    >
-      <span className="tracking-wider">{language.toUpperCase()}</span>
-    </button>
-  );
-
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-350 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-lg border-b border-zinc-200/50 dark:border-zinc-800/50 py-3"
+          ? "bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 py-3"
           : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+        {/* Logo */}
         <a
           href="#top"
-          onClick={(event) => scrollToSection(event, "#top")}
-          className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white hover:opacity-80 transition-opacity"
+          onClick={(e) => scrollToSection(e, "#top")}
+          className="text-sm font-semibold text-zinc-900 dark:text-white tracking-tight hover:opacity-60 transition-opacity"
         >
           {content.greetings.name}
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              onClick={(event) => scrollToSection(event, link.href)}
-              className={`group flex flex-col items-center gap-2 text-sm font-medium transition-colors ${
+              onClick={(e) => scrollToSection(e, link.href)}
+              className={`text-xs font-medium tracking-wide uppercase transition-colors ${
                 activeSection === link.href.replace("#", "")
                   ? "text-zinc-900 dark:text-white"
-                  : "text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white"
+                  : "text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
               }`}
             >
-              <span>{link.name}</span>
-              <span
-                className={`h-0.5 w-full origin-left rounded-full transition-all duration-300 ${
-                  activeSection === link.href.replace("#", "")
-                    ? "scale-x-100 bg-zinc-900 dark:bg-white"
-                    : "scale-x-0 bg-zinc-400/40 group-hover:scale-x-100"
-                }`}
-              />
+              {link.name}
             </a>
           ))}
 
-          {/* Theme Toggle */}
+          {/* Divider */}
+          <span className="h-4 w-px bg-zinc-200 dark:bg-zinc-800" />
+
+          {/* Theme */}
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:scale-110 active:scale-95 transition-all"
+            className="text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
             aria-label="Toggle Theme"
-            title={t("themeToggle")}
           >
-            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            {darkMode ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-          {languageToggle}
+
+          {/* Language */}
+          <button
+            onClick={() => setLanguage(language === "vi" ? "en" : "vi")}
+            className="text-xs font-bold text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors tracking-widest"
+            aria-label={t("languageToggle")}
+          >
+            {language.toUpperCase()}
+          </button>
         </div>
 
-        {/* Mobile Toggle Button */}
+        {/* Mobile controls */}
         <div className="flex items-center gap-4 md:hidden">
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className="p-2 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200"
-            aria-label="Toggle Theme"
-            title={t("themeToggle")}
+            className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
           >
-            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            {darkMode ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-          {languageToggle}
+          <button
+            onClick={() => setLanguage(language === "vi" ? "en" : "vi")}
+            className="text-xs font-bold text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors tracking-widest"
+          >
+            {language.toUpperCase()}
+          </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-zinc-800 dark:text-zinc-200"
+            className="text-zinc-700 dark:text-zinc-300"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 px-6 py-4 flex flex-col gap-4 animate-fade-in shadow-xl">
+        <div className="md:hidden border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-6 py-6 flex flex-col gap-5">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              onClick={(event) => scrollToSection(event, link.href)}
-              className={`flex flex-col gap-1 text-base font-medium py-2 ${
+              onClick={(e) => scrollToSection(e, link.href)}
+              className={`text-sm font-medium tracking-wide transition-colors ${
                 activeSection === link.href.replace("#", "")
-                  ? "text-zinc-950 dark:text-white"
-                  : "text-zinc-700 dark:text-zinc-300 hover:text-zinc-950 dark:hover:text-white"
+                  ? "text-zinc-900 dark:text-white"
+                  : "text-zinc-400 dark:text-zinc-500"
               }`}
             >
-              <span>{link.name}</span>
-              <span
-                className={`h-0.5 w-16 origin-left rounded-full transition-all duration-300 ${
-                  activeSection === link.href.replace("#", "")
-                    ? "scale-x-100 bg-zinc-900 dark:bg-white"
-                    : "scale-x-0 bg-zinc-400/40"
-                }`}
-              />
+              {link.name}
             </a>
           ))}
         </div>
