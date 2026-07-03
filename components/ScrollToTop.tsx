@@ -41,7 +41,7 @@ export default function ScrollToTop() {
         width: "3rem",
         height: "3rem",
         borderRadius: "9999px",
-        display: "flex",
+        display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
         background: "rgba(9,9,11,0.85)",
@@ -54,15 +54,21 @@ export default function ScrollToTop() {
         transition: "opacity 0.3s cubic-bezier(0.16,1,0.3,1), transform 0.3s cubic-bezier(0.16,1,0.3,1)",
         pointerEvents: visible ? "auto" : "none",
         padding: 0,
+        overflow: "hidden",
+        boxSizing: "border-box",
+        aspectRatio: "1 / 1",
+        lineHeight: 0,
+        appearance: "none",
+        WebkitAppearance: "none",
       }}
-      className="scroll-to-top-btn"
+      className="scroll-to-top-btn relative shrink-0"
     >
       {/* Circular progress ring */}
       <svg
         width="48"
         height="48"
         viewBox="0 0 48 48"
-        style={{ position: "absolute", top: 0, left: 0 }}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
       >
         {/* Background track */}
         <circle
