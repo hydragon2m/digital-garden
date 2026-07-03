@@ -19,12 +19,7 @@ export default function Home() {
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    let isDark = true;
-    if (savedTheme) {
-      isDark = savedTheme === "dark";
-    } else {
-      isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    }
+    const isDark = savedTheme ? savedTheme === "dark" : true;
     
     // Wrap state updates in a timeout to avoid synchronous setState inside useEffect warning
     const timer = setTimeout(() => {

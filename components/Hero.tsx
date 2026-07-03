@@ -32,8 +32,8 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Name — very large, editorial */}
-            <div className="flex flex-col gap-3">
+            {/* Name — desktop only */}
+            <div className="hidden md:flex flex-col gap-3">
               <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-zinc-900 dark:text-white tracking-tighter leading-[0.95]">
                 {greetings.name}
               </h1>
@@ -42,13 +42,73 @@ export default function Hero() {
               </p>
             </div>
 
+            {/* Mobile avatar + actions + copy */}
+            <div className="lg:hidden flex flex-col items-center gap-5 pt-2">
+              <div className="w-40 h-40 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-transform duration-500">
+                <Image
+                  src="/avatar.png"
+                  alt={greetings.name}
+                  width={160}
+                  height={160}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              </div>
+
+              <div className="flex flex-col items-center gap-4 w-full">
+                <div className="flex flex-row flex-wrap justify-center items-center gap-3 w-full">
+                  <a
+                    href="#contact"
+                    className="px-5 py-2.5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-medium rounded-md hover:bg-zinc-700 dark:hover:bg-zinc-100 transition-colors active:scale-95 whitespace-nowrap"
+                  >
+                    {t("heroContact")}
+                  </a>
+                  <a
+                    href={socialLinks.gitlab || socialLinks.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-2.5 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-sm font-medium rounded-md hover:border-zinc-900 dark:hover:border-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors active:scale-95 whitespace-nowrap"
+                  >
+                    GitLab
+                  </a>
+                  {greetings.resumeLink ? (
+                    <a
+                      href={greetings.resumeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2.5 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 text-sm font-medium rounded-md hover:border-zinc-900 dark:hover:border-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors active:scale-95 whitespace-nowrap"
+                    >
+                      {t("heroResume")}
+                    </a>
+                  ) : null}
+                  <a
+                    href="#experience"
+                    className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-700 whitespace-nowrap"
+                  >
+                    {t("heroExperience")} ↓
+                  </a>
+                </div>
+
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 font-normal tracking-normal text-center">
+                  Software Engineer &middot; Backend Systems
+                </p>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed text-center max-w-md">
+                  {t("heroDescription")}
+                </p>
+                <div className="flex flex-col gap-1 text-center pt-1">
+                  <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">{t("heroLocation")}</p>
+                  <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">{t("heroYearsExp")}</p>
+                </div>
+              </div>
+            </div>
+
             {/* Bio */}
-            <p className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-lg">
+            <p className="hidden md:block text-base text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-lg">
               {t("heroDescription")}
             </p>
 
-            {/* CTAs — minimal, text-forward */}
-            <div className="flex flex-wrap items-center gap-4">
+            {/* Desktop CTAs */}
+            <div className="hidden md:flex flex-wrap items-center gap-4">
               <a
                 href="#contact"
                 className="px-5 py-2.5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-medium rounded-md hover:bg-zinc-700 dark:hover:bg-zinc-100 transition-colors active:scale-95"
@@ -84,7 +144,7 @@ export default function Hero() {
           </ScrollReveal>
 
           {/* Right — avatar block */}
-          <ScrollReveal delay={120} className="flex flex-col items-center lg:items-end gap-6">
+          <ScrollReveal delay={120} className="hidden lg:flex flex-col items-center lg:items-end gap-6">
             <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-transform duration-500 hover:scale-105">
               <Image
                 src="/avatar.png"
@@ -98,7 +158,7 @@ export default function Hero() {
 
             {/* Meta info */}
             <div className="text-right flex flex-col gap-1 items-center lg:items-end">
-              <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">Hà Nội, Việt Nam</p>
+              <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">{t("heroLocation")}</p>
               <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">
                 {t("heroYearsExp")}
               </p>
