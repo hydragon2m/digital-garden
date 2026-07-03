@@ -81,12 +81,6 @@ export default function Hero() {
                       {t("heroResume")}
                     </a>
                   ) : null}
-                  <a
-                    href="#experience"
-                    className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-700 whitespace-nowrap"
-                  >
-                    {t("heroExperience")} ↓
-                  </a>
                 </div>
 
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 font-normal tracking-normal text-center">
@@ -133,12 +127,6 @@ export default function Hero() {
                   {t("heroResume")}
                 </a>
               ) : null}
-              <a
-                href="#experience"
-                className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-700"
-              >
-                {t("heroExperience")} ↓
-              </a>
             </div>
 
           </ScrollReveal>
