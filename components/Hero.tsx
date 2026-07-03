@@ -13,16 +13,16 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="min-h-[100svh] bg-white dark:bg-zinc-950 flex items-center py-24 scroll-mt-20 md:scroll-mt-24 border-b border-zinc-200 dark:border-zinc-800"
+      className="min-h-[100svh] bg-white dark:bg-zinc-950 flex items-start md:items-center py-16 md:py-24 scroll-mt-20 md:scroll-mt-24 border-b border-zinc-200 dark:border-zinc-800"
     >
       <div className="max-w-6xl mx-auto px-6 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-16 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 md:gap-24 items-start md:items-center pt-2 md:pt-0">
 
           {/* Left — text block */}
-          <ScrollReveal className="flex flex-col gap-8">
+          <ScrollReveal className="flex flex-col items-center md:items-start gap-6 md:gap-8">
 
             {/* Open to Work */}
-            <div className="flex items-center gap-2 w-fit">
+            <div className="flex items-center gap-2 w-fit mx-auto md:mx-0">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -43,7 +43,16 @@ export default function Hero() {
             </div>
 
             {/* Mobile avatar + actions + copy */}
-            <div className="lg:hidden flex flex-col items-center gap-5 pt-2">
+            <div className="md:hidden flex flex-col items-center gap-4 pt-0">
+              <div className="flex flex-col items-center gap-1 text-center">
+                <h1 className="max-w-[6ch] text-4xl font-bold text-zinc-900 dark:text-white tracking-tight leading-[0.95]">
+                  {greetings.name}
+                </h1>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 font-normal tracking-normal">
+                  Software Engineer &middot; Backend Systems
+                </p>
+              </div>
+
               <div className="w-40 h-40 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-transform duration-500">
                 <Image
                   src="/avatar.png"
@@ -55,7 +64,7 @@ export default function Hero() {
                 />
               </div>
 
-              <div className="flex flex-col items-center gap-4 w-full">
+              <div className="flex flex-col items-center gap-3 w-full">
                 <div className="flex flex-row flex-wrap justify-center items-center gap-3 w-full">
                   <a
                     href="#contact"
@@ -84,9 +93,6 @@ export default function Hero() {
                 </div>
 
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 font-normal tracking-normal text-center">
-                  Software Engineer &middot; Backend Systems
-                </p>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed text-center max-w-md">
                   {t("heroDescription")}
                 </p>
                 <div className="flex flex-col gap-1 text-center pt-1">
@@ -132,7 +138,7 @@ export default function Hero() {
           </ScrollReveal>
 
           {/* Right — avatar block */}
-          <ScrollReveal delay={120} className="hidden lg:flex flex-col items-center lg:items-end gap-6">
+          <ScrollReveal delay={120} className="hidden md:flex flex-col items-center gap-6">
             <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-transform duration-500 hover:scale-105">
               <Image
                 src="/avatar.png"
@@ -145,7 +151,7 @@ export default function Hero() {
             </div>
 
             {/* Meta info */}
-            <div className="text-right flex flex-col gap-1 items-center lg:items-end">
+            <div className="flex flex-col gap-1 items-center text-center">
               <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">{t("heroLocation")}</p>
               <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">
                 {t("heroYearsExp")}
