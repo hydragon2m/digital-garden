@@ -11,6 +11,7 @@ import Education from "../components/Education";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { LanguageProvider } from "./LanguageContext";
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState<boolean>(true);
@@ -66,6 +67,7 @@ export default function Home() {
         </main>
 
         <Footer />
+        <ScrollToTop />
       </div>
     </LanguageProvider>
   );

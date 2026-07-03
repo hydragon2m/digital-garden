@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Sora, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { seoData } from "../portfolio";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -97,7 +99,7 @@ export default function RootLayout({
   return (
     <html
       lang="vi"
-      className={`${geistSans.variable} ${geistMono.variable} h-full`}
+      className={`${sora.variable} ${plusJakartaSans.variable} h-full`}
     >
       <body className="min-h-full flex flex-col font-sans antialiased bg-white dark:bg-zinc-950">
         <script

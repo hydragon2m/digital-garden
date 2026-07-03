@@ -11,14 +11,14 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sora);
+  --font-display: var(--font-plus-jakarta-sans);
 }
 
 body {
   background-color: #09090b;
   color: #fafafa;
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sora), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   transition-property: background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
