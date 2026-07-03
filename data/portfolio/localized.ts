@@ -181,6 +181,22 @@ const experienceVi: ExperienceType[] = [
 
 const projectsVi: ProjectType[] = [
   {
+    name: "Hydra Tunnel",
+    desc: "Hệ thống reverse tunnel viết bằng Go cho phép expose local services ra public internet an toàn. Dự án hỗ trợ stream multiplexing, TLS end-to-end, multi-tenant isolation, quota/rate limit, Prometheus metrics, health checks và Docker-ready deployment.",
+    github: "https://gitlab.com/DQH8391/hydra-tunnel.git",
+    docs: "https://hydragon2m.github.io/docs-tunnel",
+    tags: ["Go", "Reverse Tunnel", "TLS", "Docker", "Prometheus", "Multi-tenant"],
+    highlights: [
+      "Stream multiplexing cho nhiều luồng trên cùng một connection.",
+      "TLS bảo vệ toàn bộ agent-core communication và token-based authentication.",
+      "Multi-tenant, quota manager và rate limiting để kiểm soát tài nguyên.",
+      "Dashboard, health checks và Prometheus metrics cho quan sát hệ thống.",
+    ],
+    architecture: {
+      description: "Core server nhận kết nối từ agent, lưu registry tunnel, route request theo host/subdomain và enforce quota trước khi forward về local service."
+    }
+  },
+  {
     name: "SSO Identity Server",
     desc: "Máy chủ quản lý người dùng tập trung hỗ trợ SAML 2.0, OAuth 2.0 và OpenID Connect (OIDC). Tích hợp xác thực đa yếu tố, Google Authenticator, Social Login, FIDO2/WebAuthn, Single Sign-On (SSO) và Single Logout (SLO).",
     github: "https://gitlab.com/DQH8391/sso-identity-server.git",
@@ -339,6 +355,22 @@ const experienceEn: ExperienceType[] = [
 ];
 
 const projectsEn: ProjectType[] = [
+  {
+    name: "Hydra Tunnel",
+    desc: "A Go-based reverse tunnel system that exposes local services to the public internet securely. The project supports stream multiplexing, end-to-end TLS, multi-tenant isolation, quotas and rate limits, Prometheus metrics, health checks, and Docker-ready deployment.",
+    github: "https://gitlab.com/DQH8391/hydra-tunnel.git",
+    docs: "https://hydragon2m.github.io/docs-tunnel",
+    tags: ["Go", "Reverse Tunnel", "TLS", "Docker", "Prometheus", "Multi-tenant"],
+    highlights: [
+      "Stream multiplexing lets multiple streams run over a single connection.",
+      "TLS secures agent-core communication with token-based authentication.",
+      "Multi-tenant isolation, quota management, and rate limiting control resources.",
+      "Dashboard, health checks, and Prometheus metrics improve observability.",
+    ],
+    architecture: {
+      description: "Core server receives agent connections, keeps the tunnel registry, routes requests by host/subdomain, and enforces quotas before forwarding traffic to local services."
+    }
+  },
   {
     name: "SSO Identity Server",
     desc: "A centralized user management server supporting SAML 2.0, OAuth 2.0, and OpenID Connect (OIDC). It integrates MFA, Google Authenticator, Social Login, FIDO2/WebAuthn, Single Sign-On (SSO), and Single Logout (SLO).",

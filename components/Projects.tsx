@@ -43,8 +43,18 @@ export default function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-700"
+                      >
+                        GitLab ↗
+                      </a>
+                  )}
+                  {project.docs && (
+                    <a
+                      href={project.docs}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-700"
                     >
-                      GitLab ↗
+                      Docs ↗
                     </a>
                   )}
                   {project.link && (

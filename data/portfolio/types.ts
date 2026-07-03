@@ -52,6 +52,7 @@ export interface ProjectType {
   name: string;
   desc: string;
   github?: string;
+  docs?: string;
   link?: string;
   tags: string[];
   stars?: number;
