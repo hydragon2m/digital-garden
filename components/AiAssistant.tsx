@@ -10,7 +10,7 @@ interface Message {
 }
 
 export default function AiAssistant() {
-  const { content, language, t } = useLanguage();
+  const { content, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
@@ -21,16 +21,13 @@ export default function AiAssistant() {
       setMessages([
         {
           sender: "bot",
-          text:
-            language === "en"
-              ? `Hello! I am the virtual recruiter assistant for ${content.greetings.name}. Ask me about experience, skills, projects, or contact information.`
-              : `Xin chào! Tôi là Trợ lý Tuyển dụng ảo của anh ${content.greetings.name}. Bạn cần tìm hiểu thông tin gì về anh ${content.greetings.name.split(" ").pop()} (kinh nghiệm, kỹ năng, dự án, thông tin liên hệ...)?`,
+          text: t("assistantGreeting"),
         },
       ]);
     }, 0);
 
     return () => clearTimeout(timer);
-  }, [content.greetings.name, language]);
+  }, [t]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });

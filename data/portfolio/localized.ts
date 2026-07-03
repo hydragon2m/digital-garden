@@ -41,6 +41,11 @@ export const uiTranslations = {
     landingIntroFocus3Title: "Performance work",
     landingIntroFocus3Desc: "PostgreSQL tuning, caching, and operational discipline that keep services predictable.",
     footerRights: "Bản quyền được bảo lưu.",
+    openToWork: "Đang tìm việc",
+    openToWorkLong: "Đang tìm kiếm cơ hội mới",
+    heroContact: "Liên hệ",
+    heroYearsExp: "3+ năm kinh nghiệm",
+    contactHeadline: "Hãy cùng xây dựng điều gì đó tốt hơn.",
     builtColumn: "Đã xây dựng",
     scaleColumn: "Quy mô",
     stackColumn: "Công nghệ",
@@ -55,6 +60,8 @@ export const uiTranslations = {
     assistantTitle: "Huy AI Recruiter Bot",
     assistantStatus: "Online và sẵn sàng hỗ trợ",
     assistantPlaceholder: "Hỏi về kinh nghiệm, kỹ năng...",
+    assistantGreeting:
+      "Xin chào! Tôi là Trợ lý Tuyển dụng ảo. Bạn cần tìm hiểu thông tin gì về hồ sơ này?",
     assistantFallback:
       "Xin lỗi, tôi chưa có thông tin chi tiết về câu hỏi này. Bạn có thể gõ các câu hỏi ngắn về 'kỹ năng', 'kinh nghiệm', 'dự án', hoặc 'liên hệ' để tôi hỗ trợ nhanh nhất nhé!",
   },
@@ -98,6 +105,11 @@ export const uiTranslations = {
     landingIntroFocus3Title: "Performance work",
     landingIntroFocus3Desc: "PostgreSQL tuning, caching, and operational discipline that keep services predictable.",
     footerRights: "All rights reserved.",
+    openToWork: "Open to Work",
+    openToWorkLong: "Open to New Opportunities",
+    heroContact: "Get in Touch",
+    heroYearsExp: "3+ years experience",
+    contactHeadline: "Let's build something great together.",
     builtColumn: "Built",
     scaleColumn: "Scale",
     stackColumn: "Stack",
@@ -112,6 +124,8 @@ export const uiTranslations = {
     assistantTitle: "Huy's AI Recruiter Bot",
     assistantStatus: "Online and ready to assist",
     assistantPlaceholder: "Ask about experience, skills...",
+    assistantGreeting:
+      "Hello! I am the virtual recruiter assistant. Ask me about experience, skills, projects, or contact information.",
     assistantFallback:
       "Sorry, I do not have detailed information for that question yet. Try asking about skills, experience, projects, or contact information.",
   },

@@ -7,7 +7,7 @@ import SectionHeading from "./SectionHeading";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Contact() {
-  const { content, t, language } = useLanguage();
+  const { content, t } = useLanguage();
   const profile = content.contactFallback;
 
   const links = [
@@ -36,14 +36,12 @@ export default function Contact() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
               <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wide">
-                {language === "vi" ? "Đang tìm kiếm cơ hội mới" : "Open to New Opportunities"}
+                {t("openToWorkLong")}
               </span>
             </div>
 
             <h3 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tracking-tight leading-tight">
-              {language === "vi"
-                ? "Hãy cùng xây dựng\nđiều gì đó tốt hơn."
-                : "Let's build something\ngreat together."}
+              {t("contactHeadline")}
             </h3>
 
             <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-md">

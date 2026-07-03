@@ -6,7 +6,7 @@ import { useLanguage } from "../app/LanguageContext";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const { content, t, language } = useLanguage();
+  const { content, t } = useLanguage();
 
   return (
     <footer className="py-8 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
@@ -21,9 +21,7 @@ export default function Footer() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
             </span>
-            <span className="text-emerald-600 dark:text-emerald-500 font-medium">
-              {language === "vi" ? "Đang tìm việc" : "Open to Work"}
-            </span>
+            <span className="text-emerald-600 dark:text-emerald-500 font-medium">{t("openToWork")}</span>
           </div>
         </div>
 

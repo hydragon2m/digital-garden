@@ -13,7 +13,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("top");
-  const { language, setLanguage, t, content } = useLanguage();
+  const { language, toggleLanguage, t, content } = useLanguage();
 
   useEffect(() => {
     const sectionIds = ["top", "about", "experience", "things-built", "projects", "education", "contact"];
@@ -134,7 +134,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
 
           {/* Language */}
           <button
-            onClick={() => setLanguage(language === "vi" ? "en" : "vi")}
+            onClick={toggleLanguage}
             className="text-xs font-bold text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors tracking-widest"
             aria-label={t("languageToggle")}
           >
@@ -151,7 +151,7 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
             {darkMode ? <Sun size={16} /> : <Moon size={16} />}
           </button>
           <button
-            onClick={() => setLanguage(language === "vi" ? "en" : "vi")}
+            onClick={toggleLanguage}
             className="text-xs font-bold text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors tracking-widest"
           >
             {language.toUpperCase()}

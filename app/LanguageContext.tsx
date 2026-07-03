@@ -3,9 +3,12 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { localizedPortfolio, type Language, uiTranslations } from "../portfolio";
 
+const supportedLanguages: Language[] = ["vi", "en"];
+
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+  toggleLanguage: () => void;
   t: (key: keyof typeof uiTranslations.vi) => string;
   content: (typeof localizedPortfolio)[Language];
 }
@@ -17,7 +20,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const savedLang = localStorage.getItem("language") as Language;
-    if (savedLang === "vi" || savedLang === "en") {
+    if (supportedLanguages.includes(savedLang)) {
       setTimeout(() => {
         setLanguageState(savedLang);
       }, 0);
@@ -30,6 +33,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.lang = lang;
   };
 
+  const toggleLanguage = () => {
+    const currentIndex = supportedLanguages.indexOf(language);
+    const nextLanguage = supportedLanguages[(currentIndex + 1) % supportedLanguages.length];
+    setLanguage(nextLanguage);
+  };
+
   const t = (key: keyof typeof uiTranslations.vi): string => {
     return uiTranslations[language][key] || uiTranslations["vi"][key] || String(key);
   };
@@ -39,7 +48,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, [language]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, content: localizedPortfolio[language] }}>
+    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, t, content: localizedPortfolio[language] }}>
       {children}
     </LanguageContext.Provider>
   );

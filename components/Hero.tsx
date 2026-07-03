@@ -7,7 +7,7 @@ import { useLanguage } from "../app/LanguageContext";
 import ScrollReveal from "./ScrollReveal";
 
 export default function Hero() {
-  const { content, t, language } = useLanguage();
+  const { content, t } = useLanguage();
   const { greetings } = content;
 
   return (
@@ -28,7 +28,7 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
               <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 tracking-wide uppercase">
-                {language === "vi" ? "Đang tìm việc" : "Open to Work"}
+                {t("openToWork")}
               </span>
             </div>
 
@@ -53,7 +53,7 @@ export default function Hero() {
                 href="#contact"
                 className="px-5 py-2.5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-medium rounded-md hover:bg-zinc-700 dark:hover:bg-zinc-100 transition-colors active:scale-95"
               >
-                {language === "vi" ? "Liên hệ" : "Get in Touch"}
+                {t("heroContact")}
               </a>
               <a
                 href={socialLinks.gitlab || socialLinks.github}
@@ -100,7 +100,7 @@ export default function Hero() {
             <div className="text-right flex flex-col gap-1 items-center lg:items-end">
               <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">Hà Nội, Việt Nam</p>
               <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">
-                {language === "vi" ? "2+ năm kinh nghiệm" : "2+ years experience"}
+                {t("heroYearsExp")}
               </p>
             </div>
           </ScrollReveal>
