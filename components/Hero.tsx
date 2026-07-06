@@ -32,11 +32,16 @@ export default function Hero() {
               </span>
             </div>
 
+            {/* Hidden H1 for SEO Crawler optimization */}
+            <h1 className="sr-only">
+              {greetings.name} - Software Engineer &middot; Backend Systems
+            </h1>
+
             {/* Name — desktop only */}
             <div className="hidden md:flex flex-col gap-3">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-zinc-900 dark:text-white tracking-tighter leading-[0.95]">
+              <p className="text-6xl md:text-7xl lg:text-8xl font-bold text-zinc-900 dark:text-white tracking-tighter leading-[0.95]">
                 {greetings.name}
-              </h1>
+              </p>
               <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-normal tracking-normal">
                 Software Engineer &middot; Backend Systems
               </p>
