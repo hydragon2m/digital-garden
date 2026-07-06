@@ -45,9 +45,9 @@ export default function Hero() {
             {/* Mobile avatar + actions + copy */}
             <div className="md:hidden flex flex-col items-center gap-4 pt-0">
               <div className="flex flex-col items-center gap-1 text-center">
-                <h1 className="max-w-[6ch] text-4xl font-bold text-zinc-900 dark:text-white tracking-tight leading-[0.95]">
+                <p className="max-w-[6ch] text-4xl font-bold text-zinc-900 dark:text-white tracking-tight leading-[0.95]">
                   {greetings.name}
-                </h1>
+                </p>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 font-normal tracking-normal">
                   Software Engineer &middot; Backend Systems
                 </p>
