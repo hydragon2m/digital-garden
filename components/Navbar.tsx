@@ -26,6 +26,23 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
 
       if (sections.length === 0) return;
 
+      const isAtBottom =
+        window.scrollY + window.innerHeight >=
+        document.documentElement.scrollHeight - 2;
+      if (isAtBottom) {
+        const current = sections[sections.length - 1];
+        setActiveSection(current.id);
+        const nextHash = `#${current.id}`;
+        if (window.location.hash !== nextHash) {
+          window.history.replaceState(
+            null,
+            "",
+            `${window.location.pathname}${window.location.search}${nextHash}`
+          );
+        }
+        return;
+      }
+
       const readingLine = window.scrollY + window.innerHeight * 0.38;
       const current = sections.find((section, index) => {
         const next = sections[index + 1];
@@ -62,18 +79,25 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
     };
   }, []);
 
-  const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     event.preventDefault();
     const id = href.replace("#", "");
     const target = document.getElementById(id);
     if (!target) return;
-    const navOffset = 72;
-    const top = id === "top" ? 0 : target.getBoundingClientRect().top + window.scrollY - navOffset;
     const nextHash = id === "top" ? "" : href;
     setIsOpen(false);
     setActiveSection(id);
     window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}${nextHash}`);
-    window.scrollTo({ top, behavior: "smooth" });
+    if (id === "top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
   };
 
   const navLinks = [
