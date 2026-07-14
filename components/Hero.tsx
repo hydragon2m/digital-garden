@@ -88,8 +88,8 @@ export default function Hero() {
                   {t("heroDescription")}
                 </p>
                 <div className="flex flex-col gap-1 text-center pt-1">
-                  <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">{t("heroLocation")}</p>
-                  <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">{t("heroYearsExp")}</p>
+                  <p className="text-xs text-zinc-400 dark:text-zinc-500 font-sans">{t("heroLocation")}</p>
+                  <p className="text-xs text-zinc-400 dark:text-zinc-500 font-sans">{t("heroYearsExp")}</p>
                 </div>
               </div>
             </div>
@@ -144,8 +144,8 @@ export default function Hero() {
 
             {/* Meta info */}
             <div className="flex flex-col gap-1 items-center text-center">
-              <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">{t("heroLocation")}</p>
-              <p className="text-xs text-zinc-400 dark:text-zinc-500 font-mono">
+              <p className="text-xs text-zinc-400 dark:text-zinc-500 font-sans">{t("heroLocation")}</p>
+              <p className="text-xs text-zinc-400 dark:text-zinc-500 font-sans">
                 {t("heroYearsExp")}
               </p>
             </div>
