@@ -41,9 +41,6 @@ export default function Home() {
     }
   }, [darkMode, mounted]);
 
-  if (!mounted) {
-    return <div className="min-h-screen bg-zinc-950" />;
-  }
 
   return (
     <LanguageProvider>
