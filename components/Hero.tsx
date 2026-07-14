@@ -32,31 +32,18 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Hidden H1 for SEO Crawler optimization */}
-            <h1 className="sr-only">
-              {greetings.name} - Software Engineer &middot; Backend Systems
-            </h1>
-
-            {/* Name — desktop only */}
-            <div className="hidden md:flex flex-col gap-3">
-              <p className="text-6xl md:text-7xl lg:text-8xl font-bold text-zinc-900 dark:text-white tracking-tighter leading-[0.95]">
+            {/* Responsive Name & Subtitle — Single visible H1 on page */}
+            <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left w-full">
+              <h1 className="max-w-[8ch] md:max-w-none text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-zinc-900 dark:text-white tracking-tight md:tracking-tighter leading-[0.95]">
                 {greetings.name}
-              </p>
-              <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-normal tracking-normal">
+              </h1>
+              <p className="text-sm md:text-lg lg:text-xl text-zinc-500 dark:text-zinc-400 font-normal tracking-normal">
                 Software Engineer &middot; Backend Systems
               </p>
             </div>
 
             {/* Mobile avatar + actions + copy */}
             <div className="md:hidden flex flex-col items-center gap-4 pt-0">
-              <div className="flex flex-col items-center gap-1 text-center">
-                <p className="max-w-[6ch] text-4xl font-bold text-zinc-900 dark:text-white tracking-tight leading-[0.95]">
-                  {greetings.name}
-                </p>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400 font-normal tracking-normal">
-                  Software Engineer &middot; Backend Systems
-                </p>
-              </div>
 
               <div className="w-40 h-40 rounded-full overflow-hidden border border-zinc-200 dark:border-zinc-800 transition-transform duration-500">
                 <Image
